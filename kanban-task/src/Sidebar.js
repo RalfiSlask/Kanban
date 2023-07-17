@@ -9,7 +9,7 @@ const Sidebar = () => {
   const { isDarkMode } = useContext(DarkModeContext);
 
   return (
-    <div className={`${isDarkMode ? "bg-darkGrey" : "bg-white"} md:w-[260px] xl:w-[300px] min-h-[1024px] flex flex-col absolute top-0 left-0 pt-8 pb-12 border-r pl-3 xl:pl-6 border-linesLight`}>
+    <div className={`${isDarkMode ? "bg-darkGrey border-linesDark" : "bg-white border-linesLight"} md:w-[260px] xl:w-[300px] min-h-[100vh] flex flex-col absolute top-0 left-0 pt-8 pb-12 border-r pl-3 xl:pl-6`}>
         <MobileLogo margins={"mb-14"}/>
         <BoardOverview absolute={"absolute left-0 top-24"}/>
         <DarkModePanel margins={"mb-6 mt-[800px]"}/>

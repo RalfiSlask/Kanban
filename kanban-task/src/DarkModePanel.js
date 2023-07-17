@@ -8,9 +8,9 @@ const DarkModePanel = ( {margins} ) => {
     const { isDarkMode } = useContext(DarkModeContext)
 
   return (
-    <div className={`${isDarkMode ? "bg-gray-700" : "bg-gray-100" } flex items-center justify-center w-[235px] xl:w-[260px] h-12 rounded-lg gap-4 ${margins}`}> 
+    <div className={`${isDarkMode ? "bg-veryDarkGray" : "bg-lightGray hover:opacity-0.1" } cursor-pointer flex items-center justify-center w-[235px] xl:w-[260px] h-12 rounded-lg gap-4 ${margins}`}> 
         <LogoLight className="fill-gray-600"/>
-       {/*  <input type="range" value="1" min="1" max="2" className="w-8 h-8"/> */}
+        <input type="range" min="1" max="2" className="w-8 h-8"/>
         <LogoDark className="fill-gray-600"/>
     </div>
   )

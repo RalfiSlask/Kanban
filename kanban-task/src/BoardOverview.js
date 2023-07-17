@@ -4,8 +4,7 @@ import Platform from "./Platform";
 import CreateNewBoard from "./CreateNewBoard";
 
 const BoardOverview = ( {absolute} ) => {
-    const [boardNumber, setBoardNumber] = useState(0)
-    const { platformList } = useContext(Context)
+    const { platformList, boardNumber } = useContext(Context)
 
   return (
     <>

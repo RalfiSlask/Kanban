@@ -17,7 +17,7 @@ const Header = () => {
     }
 
   return (
-    <header className={`${isDarkMode ? "bg-black text-white" : "bg-white text-black"} h-16 w-[100%] flex justify-center relative pl-6 pr-6`}>
+    <header className={`${isDarkMode ? "bg-darkGrey text-white" : "bg-white text-black"} h-16 xl:h-24 md:h-20 w-[100%] flex justify-center relative pl-6 pr-6`}>
         <div className="w-[360px] md:w-[100%] flex items-center justify-between">
             <div className="flex items-center gap-32 xl:gap-40">
             <MobileLogo />

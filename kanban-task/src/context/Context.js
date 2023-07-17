@@ -9,6 +9,11 @@ export const ContextProvider = ( {children} ) => {
     const [selectedPlatform, setSelectedPlatform] = useState("Platform Launch")
     const [openModal, setOpenModal] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(true)
+    const [boardNumber, setBoardNumber] = useState(0)
+
+    useEffect(() => {
+        setBoardNumber(Array.from(platformList).length)
+    })
 
     const closeSidebarOnClick = () => {
         setSidebarOpen(false)
@@ -18,7 +23,6 @@ export const ContextProvider = ( {children} ) => {
         setSidebarOpen(true)
     };
 
-    
     const handlePlatformClick = () => {
         if(isMobile) {
             setOpenModal(prevState => !prevState)
@@ -58,6 +62,7 @@ export const ContextProvider = ( {children} ) => {
         sidebarOpen: sidebarOpen,
         closeSidebarOnClick: closeSidebarOnClick,
         openSidebarOnClick: openSidebarOnClick,
+        boardNumber: boardNumber,
     }
 
     return (

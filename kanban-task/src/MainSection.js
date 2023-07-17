@@ -4,6 +4,7 @@ import { useContext } from "react"
 import EmptyBoard from "./EmptyBoard";
 import Sidebar from "./Sidebar";
 import Lightbox from "./Lightbox";
+import ShowSidebar from "./ShowSidebar";
 
 const MainSection = () => {
     const { isDarkMode } = useContext(DarkModeContext);
@@ -12,6 +13,7 @@ const MainSection = () => {
   return (
     <main className={`${isDarkMode ? "bg-darkBG" : "bg-lightBG"} text-gray-500 flex justify-center h-[100%]`}>
         {!isMobile && sidebarOpen && <Sidebar />}
+        {!isMobile && !sidebarOpen && <ShowSidebar />}
         {openModal && <Lightbox />}
         <EmptyBoard />
     </main>
