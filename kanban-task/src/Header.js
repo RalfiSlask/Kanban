@@ -2,40 +2,39 @@ import DarkModeContext from "./context/DarkModeContext"
 import Context from "./context/Context";
 import { useContext, useState } from "react"
 import ButtonAddNewTask from "./ButtonAddNewTask";
-import logoMobile from "./assets/logo-mobile.svg";
 import logoEllipsis from "./assets/icon-vertical-ellipsis.svg";
-
+import BoardModal from "./BoardModal";
 import Board from "./Board";
+import MobileLogo from "./MobileLogo";
 
 const Header = () => {
     const [isButtonClicked, setIsButtonClicked] = useState(false)
-    const [openModal, setOpenModal] = useState(false)
     const { isDarkMode } = useContext(DarkModeContext); 
-    const { isMobile } = useContext(Context);
-
-    const handlePlatformClick = () => {
-        setOpenModal(true)
-    }
+    const { isMobile, openModal, handlePlatformClick } = useContext(Context);
 
     const handleButtonClick = () => {
         setIsButtonClicked(prevState => !prevState)
     }
 
   return (
-    <header className={`${isDarkMode ? "bg-black text-white" : "bg-white text-black"} h-16 w-[100%] flex justify-center`}>
-        <div className="w-[350px] flex items-center">
-            <img src={logoMobile} alt="logo mobile" className="h-[24px] w-[24px] mr-4"/>
-            {isMobile ? null : <p>kanban</p>}
+    <header className={`${isDarkMode ? "bg-black text-white" : "bg-white text-black"} h-16 w-[100%] flex justify-center relative pl-6 pr-6`}>
+        <div className="w-[360px] md:w-[100%] flex items-center justify-between">
+            <div className="flex items-center gap-32 xl:gap-40">
+            <MobileLogo />
             <Board 
                 onClick={handlePlatformClick} 
                 clicked={openModal}
             />
+            </div>
+            {openModal && <BoardModal />}
+            <div className="flex items-center">
             {isMobile ? 
             <ButtonAddNewTask 
                 onClick={handleButtonClick}
             /> 
             : <button className="bg-purpleColor text-white w-44 h-12 rounded-3xl flex items-center justify-center font-bold text-[15px]">+ Add New Task</button>}
             <img src={logoEllipsis} alt="ellipsis" className="ml-4"/> 
+            </div>
         </div>
     </header>
   )

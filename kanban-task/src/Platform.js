@@ -1,18 +1,15 @@
-import logoPlatform from "./assets/icon-board.svg";
+import { ReactComponent as LogoPlatform} from "./assets/icon-board.svg";
 import { useContext } from "react";
-import DarkModeContext from "./context/DarkModeContext";
+import Context from "./context/Context";
 
-const Platform = ( {id, title} ) => {
-    const { isDarkMode } = useContext(DarkModeContext)
+const Platform = ( {id, title } ) => {
+  const { selectedPlatform, handleClickOnPlatform } = useContext(Context);
 
   return (
-    <>
-    <div className={`flex items-center w-[240px] h-[48px] rounded-tl-0 rounded-br-full`}>
-        <img src={logoPlatform} alt="platform logo" />
+    <div className={`${selectedPlatform === title ? "bg-purpleColor text-white" : "text-mediumGray"} flex items-center w-[240px] h-[48px] rounded-tl-0 rounded-r-full pl-6`} onClick={() => {handleClickOnPlatform(id)}}>
+        <LogoPlatform alt="platform logo" className={`${selectedPlatform === title ? "fill-white" : "fill-mediumGray"} mr-3`}/>
         {title}
-    </div>
-    </>
-    
+    </div>    
   )
 }
 
