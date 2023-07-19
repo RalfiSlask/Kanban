@@ -6,6 +6,8 @@ import Lightbox from "./ui/Lightbox";
 import ShowSidebar from "./ShowSidebar";
 import BoardSection from "./BoardSection";
 import AddNewBoardModal from "./modals/AddNewBoardModal";
+import DeleteBoardModal from "./modals/DeleteBoardModal";
+import AddNewTaskModal from "./modals/AddNewTaskModal"
 
 const MainSection = () => {
     const { isDarkMode } = useContext(DarkModeContext);
@@ -18,7 +20,8 @@ const MainSection = () => {
         {lightboxActive && <Lightbox />}
         <BoardSection />
         {openNewBoardModal && <AddNewBoardModal />}
-
+        <AddNewTaskModal />
+        <DeleteBoardModal />
     </main>
   )
 }

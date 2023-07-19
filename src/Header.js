@@ -6,11 +6,12 @@ import logoEllipsis from "./assets/icon-vertical-ellipsis.svg";
 import BoardModal from "./modals/BoardModal";
 import Board from "./SelectBoard";
 import MobileLogo from "./MobileLogo";
+import EditDeleteBoard from "./modals/EditDeleteBoard";
 
 const Header = () => {
     const [isButtonClicked, setIsButtonClicked] = useState(false)
     const { isDarkMode } = useContext(DarkModeContext); 
-    const { openModal, handlePlatformClick } = useContext(Context);
+    const { openModal, handlePlatformClick, toggleChangeBoardModal, openChangeBoardModal } = useContext(Context);
 
     const handleButtonClick = () => {
         setIsButtonClicked(prevState => !prevState)
@@ -27,10 +28,12 @@ const Header = () => {
                 />
             </div>
             {openModal && <BoardModal />}
-            <div className="flex items-center">
+            <div className="flex items-center relative">
                 <ButtonAddNewTask onClick={handleButtonClick}/> 
-                <img src={logoEllipsis} alt="ellipsis" className="ml-4"/> 
+                <img onClick={toggleChangeBoardModal} src={logoEllipsis} alt="ellipsis" className="ml-4 cursor-pointer"/> 
+                {openChangeBoardModal && <EditDeleteBoard />}
             </div>
+        
         </div>
     </header>
   )

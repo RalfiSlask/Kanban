@@ -5,10 +5,10 @@ import { useContext } from "react";
 
 const ButtonCreateNewBoard = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { handleClickOnNewBoard } = useContext(Context)
+  const { openNewBoard} = useContext(Context)
 
   return (
-    <div onClick={handleClickOnNewBoard} className={`${isDarkMode ? "hover:bg-white" : "hover:bg-hoverPurple"} flex items-center w-[240px] h-[48px] rounded-tl-0 rounded-r-full text-purpleColor pl-6 cursor-pointer`}>
+    <div onClick={openNewBoard} className={`${isDarkMode ? "hover:bg-white" : "hover:bg-hoverPurple"} flex items-center w-[240px] h-[48px] rounded-tl-0 rounded-r-full text-purpleColor pl-6 cursor-pointer`}>
         <LogoPlatform alt="platform logo" className="mr-3 fill-purpleColor"/>
         <p>+ Create New Board</p>
     </div>  

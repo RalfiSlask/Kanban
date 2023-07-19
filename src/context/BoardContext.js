@@ -10,20 +10,37 @@ export const BoardProvider = ( {children} ) => {
     const [columns, setColumns] = useState([])
     const [newColumns, setNewColumns] = useState([{name: "Todo", tasks: []}, {name: "Doing", tasks: []}])
     const [boardName, setBoardName] = useState("")
+   
+    useEffect(() => {
+      const storedBoards = JSON.parse(localStorage.getItem("boards"));
+      if(storedBoards) {
+        setboardList(storedBoards)
+      }
+    }, []);
+    
+    useEffect(() => {
+      Array.from(boardList).forEach(board => {
+         if(selectedBoard === board.name) {
+           setColumns(board.columns)
+         }
+      })
+      
+   }, [selectedBoard]);
+ 
+   useEffect(() => {
+       setBoardNumber(Array.from(boardList).length)
+   });
 
-    const AddNewBoardOnClick = () => {
+    const AddNewBoard = () => {
       const updatedList = [...boardList, {name: boardName, columns: newColumns}]
       setboardList(updatedList)
-    }
+      localStorage.setItem("boards", JSON.stringify(updatedList))
+    };
 
     const handleChangeBoardName = (event) => {
       setBoardName(event.target.value)
       console.log(event.target.value)
     };
-
-    useEffect(() => {
-      console.log(boardList)
-    })
 
     const clickOnNewColumn = () => {
       setNewColumns(prev => [...prev, {name: "", tasks: []}])
@@ -34,23 +51,6 @@ export const BoardProvider = ( {children} ) => {
       const filteredColumns = updatedColumns.filter((column, index) => !(index === id))
       setNewColumns(filteredColumns)
     };
-
-    const clickCreateNewBoard = () => {
-      
-    }
-
-    useEffect(() => {
-       Array.from(boardList).forEach(board => {
-          if(selectedBoard === board.name) {
-            setColumns(board.columns)
-          }
-       })
-       
-    }, [selectedBoard])
-  
-    useEffect(() => {
-        setBoardNumber(Array.from(boardList).length)
-    })
 
     const handleClickOnBoard = (id) => {
         Array.from(boardList).forEach((platform, index) => {
@@ -64,13 +64,14 @@ export const BoardProvider = ( {children} ) => {
         boardList: boardList,
         selectedBoard: selectedBoard,
         newColumns: newColumns,
+        boardNumber: boardNumber,
+        columns: columns,
+        boardName: boardName,
         handleClickOnBoard: handleClickOnBoard,
         clickOnNewColumn: clickOnNewColumn,
         deleteColumnOnClick: deleteColumnOnClick,
         handleChangeBoardName: handleChangeBoardName,
-        AddNewBoardOnClick: AddNewBoardOnClick,
-        boardNumber: boardNumber,
-        columns: columns,
+        AddNewBoard: AddNewBoard,
     }
 
     return (

@@ -9,6 +9,23 @@ export const ContextProvider = ( {children} ) => {
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [lightboxActive, setLightboxActive] = useState(false);
     const [openNewBoardModal, setOpenNewBoardModal] = useState(false);
+    const [openChangeBoardModal, setOpenChangeBoardModal] = useState(false);
+    const [openDeleteBoardModal, setDeleteBoardModal] = useState(false);
+    const [openEditBoardModal, setEditBoardModal] = useState(false);
+
+    const handleClickOnEdit = () => {
+        setDeleteBoardModal(true)
+        setLightboxActive(true)
+    };
+
+    const handleClickOnDelete = () => {
+        setEditBoardModal(true)
+        setLightboxActive(true)
+    };
+
+    const toggleChangeBoardModal = () => {
+        setOpenChangeBoardModal(prevState => !prevState)
+    };
 
     const closeSidebarOnClick = () => {
         setSidebarOpen(false)
@@ -25,10 +42,15 @@ export const ContextProvider = ( {children} ) => {
         }
     };
 
-    const handleClickOnNewBoard = () => {
+    const openNewBoard = () => {
         setOpenNewBoardModal(true)
         setOpenModal(false)
         setLightboxActive(true)
+    };
+
+    const closeNewBoard = () => {
+        setOpenNewBoardModal(false)
+        setLightboxActive(false)
     };
 
     useEffect(() => {
@@ -50,14 +72,19 @@ export const ContextProvider = ( {children} ) => {
 
     const contextValue = {
         isMobile: isMobile,
-        handlePlatformClick: handlePlatformClick,
         openModal: openModal,
         sidebarOpen: sidebarOpen,
         lightboxActive: lightboxActive,
         openNewBoardModal: openNewBoardModal,
+        openChangeBoardModal: openChangeBoardModal,
+        handlePlatformClick: handlePlatformClick,
+        toggleChangeBoardModal: toggleChangeBoardModal,
         closeSidebarOnClick: closeSidebarOnClick,
         openSidebarOnClick: openSidebarOnClick,
-        handleClickOnNewBoard: handleClickOnNewBoard,
+        openNewBoard: openNewBoard,
+        closeNewBoard: closeNewBoard,
+        handleClickOnDelete: handleClickOnDelete,
+        handleClickOnEdit: handleClickOnEdit,
     };
 
     return (
