@@ -4,7 +4,7 @@ import { useContext } from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Lightbox from "./ui/Lightbox";
 import ShowSidebar from "./components/Sidebar/ShowSidebar";
-import BoardSection from "./BoardSection";
+import BoardSection from "./components/board/BoardSection";
 import AddNewBoardModal from "./components/modals/AddNewBoardModal";
 import DeleteBoardModal from "./components/modals/DeleteBoardModal";
 import EditBoardModal from "./components/modals/EditBoardModal";

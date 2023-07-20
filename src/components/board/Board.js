@@ -1,7 +1,7 @@
 import { useContext} from "react";
-import BoardContext from "./context/BoardContext";
+import BoardContext from "../../context/BoardContext";
 import Column from "./Column";
-import Context from "./context/Context";
+import Context from "../../context/Context";
 import NewColumnColumn from "./NewColumnColumn";
 
 const Board = () => {

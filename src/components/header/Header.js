@@ -4,7 +4,7 @@ import { useContext, useState } from "react"
 import ButtonAddNewTask from "./ButtonAddNewTask";
 import logoEllipsis from "../../assets/icon-vertical-ellipsis.svg";
 import BoardModal from "../modals/BoardModal";
-import Board from "../../SelectBoard";
+import BoardSelector from "./BoardSelector";
 import MobileLogo from "./MobileLogo";
 import EditDeleteBoard from "../modals/EditDeleteBoard";
 
@@ -22,7 +22,7 @@ const Header = () => {
         <div className="w-[360px] md:w-[100%] flex items-center justify-between">
             <div className="flex items-center md:gap-10 xl:gap-12 h-[100%]">
                 <MobileLogo />
-                <Board 
+                <BoardSelector 
                     onClick={handlePlatformClick} 
                     clicked={openModal}
                 />

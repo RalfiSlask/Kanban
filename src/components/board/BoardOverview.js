@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import BoardContext from "./context/BoardContext";
-import Platform from "./Platform";
-import ButtonCreateNewBoard from "./buttons/ButtonCreateNewBoard";
+import BoardContext from "../../context/BoardContext";
+import Platform from "../../Platform";
+import ButtonCreateNewBoard from "../../buttons/ButtonCreateNewBoard";
 
 const BoardOverview = ( {absolute} ) => {
     const { boardList, boardNumber } = useContext(BoardContext)

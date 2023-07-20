@@ -1,8 +1,8 @@
 import EmptyBoard from "./EmptyBoard";
 import { useContext } from "react";
-import BoardContext from "./context/BoardContext";
+import BoardContext from "../../context/BoardContext";
 import Board from "./Board";
-import Context from "./context/Context";
+import Context from "../../context/Context";
 
 const BoardSection = () => {
     const { columns } = useContext(BoardContext)

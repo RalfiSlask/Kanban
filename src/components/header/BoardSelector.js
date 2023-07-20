@@ -1,10 +1,10 @@
-import logoChevronUp from "./assets/icon-chevron-up.svg";
-import logoChevronDown from "./assets/icon-chevron-down.svg";
+import logoChevronUp from "../../assets/icon-chevron-up.svg";
+import logoChevronDown from "../../assets/icon-chevron-down.svg";
 import { useContext } from "react";
-import Context from "./context/Context";
-import BoardContext from "./context/BoardContext";
+import Context from "../../context/Context";
+import BoardContext from "../../context/BoardContext";
 
-const SelectBoard = ( {onClick, clicked} ) => {
+const BoardSelector = ( {onClick, clicked} ) => {
   const { isMobile } = useContext(Context)
   const { selectedBoard } = useContext(BoardContext)
 
@@ -16,4 +16,4 @@ const SelectBoard = ( {onClick, clicked} ) => {
   )
 }
 
-export default SelectBoard
+export default BoardSelector

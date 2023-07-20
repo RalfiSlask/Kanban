@@ -1,4 +1,4 @@
-import ButtonAddNewColumn from "./buttons/ButtonAddNewColumn";
+import ButtonAddNewColumn from "../../buttons/ButtonAddNewColumn";
 
 const EmptyBoard = () => {
   return (

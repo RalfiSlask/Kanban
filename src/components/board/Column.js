@@ -1,6 +1,6 @@
 import ColumnBall from "./ColumnBall"
 import Task from "./Task"
-import Context from "./context/Context"
+import Context from "../../context/Context"
 import { useContext } from "react"
 
 const Column = ( {id, title, tasks} ) => {

@@ -3,10 +3,10 @@ import BoardContext from "../../context/BoardContext"
 import Context from "../../context/Context"
 import ButtonPurple from "../../ui/ButtonPurple"
 import ButtonLightPurple from "../../ui/ButtonLightPurple"
-import ModalHeading from "../../ModalHeading"
+import ModalHeading from "./ModalHeading"
 import FormList from "../FormList"
 import AddForm from "../AddForm"
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import FormContext from "../../context/FormContext"
 
 const AddNewBoardModal = () => {
@@ -27,8 +27,6 @@ const AddNewBoardModal = () => {
         closeNewBoard();
       } 
     };
-
-
 
   return (
     <div className={`${isDarkMode ? "bg-darkGrey text-white" : "bg-white text-black"} absolute z-20 w-[343px] md:w-[480px] p-[24px] md:p-[32px] rounded-[6px]`}>

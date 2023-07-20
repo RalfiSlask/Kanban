@@ -1,4 +1,4 @@
-import BoardOverview from "../../BoardOverview"
+import BoardOverview from "../board/BoardOverview"
 import DarkModePanel from "../../DarkModePanel"
 import DarkModeContext from "../../context/DarkModeContext"
 import { useContext } from "react"

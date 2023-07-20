@@ -8,18 +8,12 @@ export const FormProvider = ( {children} ) => {
     const [buttonPressed, setButtonPressed] = useState(false)
     const [inputErrors, setInputErrors] = useState(false)
 
-    useEffect(() => {
-      console.log(inputErrors)
-      console.log(boardError)
-    })
-  
     const checkInputsForErrors = (error, inputIndex) => {
       setInputErrors(prevErrors => {
        return {...prevErrors, [inputIndex]:error }
       })
      };
 
-    
     const contextValue = {
         errorText: errorText,
         boardError: boardError,
