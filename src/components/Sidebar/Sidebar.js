@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import BoardOverview from "./BoardOverview"
-import DarkModePanel from "./DarkModePanel"
-import MobileLogo from "./MobileLogo"
-import DarkModeContext from "./context/DarkModeContext"
+import BoardOverview from "../../BoardOverview"
+import DarkModePanel from "../../DarkModePanel"
+import MobileLogo from "../header/MobileLogo"
+import DarkModeContext from "../../context/DarkModeContext"
 import HideSidebar from "./HideSidebar"
 
 const Sidebar = () => {

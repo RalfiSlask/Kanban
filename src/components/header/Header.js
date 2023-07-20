@@ -1,12 +1,12 @@
-import DarkModeContext from "./context/DarkModeContext"
-import Context from "./context/Context";
+import DarkModeContext from "../../context/DarkModeContext"
+import Context from "../../context/Context";
 import { useContext, useState } from "react"
-import ButtonAddNewTask from "./buttons/ButtonAddNewTask";
-import logoEllipsis from "./assets/icon-vertical-ellipsis.svg";
-import BoardModal from "./modals/BoardModal";
-import Board from "./SelectBoard";
+import ButtonAddNewTask from "./ButtonAddNewTask";
+import logoEllipsis from "../../assets/icon-vertical-ellipsis.svg";
+import BoardModal from "../modals/BoardModal";
+import Board from "../../SelectBoard";
 import MobileLogo from "./MobileLogo";
-import EditDeleteBoard from "./modals/EditDeleteBoard";
+import EditDeleteBoard from "../modals/EditDeleteBoard";
 
 const Header = () => {
     const [isButtonClicked, setIsButtonClicked] = useState(false)

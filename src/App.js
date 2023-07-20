@@ -3,7 +3,7 @@ import { ContextProvider } from "./context/Context";
 import { BoardProvider } from "./context/BoardContext";
 import { FormProvider } from "./context/FormContext";
 import MainSection from "./MainSection";
-import Header from "./Header";
+import Header from "./components/header/Header";
 
 function App() {
   return (

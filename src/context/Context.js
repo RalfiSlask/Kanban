@@ -14,13 +14,18 @@ export const ContextProvider = ( {children} ) => {
     const [openEditBoardModal, setEditBoardModal] = useState(false);
 
     const handleClickOnEdit = () => {
-        setDeleteBoardModal(true)
+        setEditBoardModal(true)
         setLightboxActive(true)
     };
 
     const handleClickOnDelete = () => {
-        setEditBoardModal(true)
+        setDeleteBoardModal(true)
         setLightboxActive(true)
+    };
+
+    const closeDeleteBoardModal = () => {
+        setDeleteBoardModal(false)
+        setLightboxActive(false)
     };
 
     const toggleChangeBoardModal = () => {
@@ -83,8 +88,11 @@ export const ContextProvider = ( {children} ) => {
         openSidebarOnClick: openSidebarOnClick,
         openNewBoard: openNewBoard,
         closeNewBoard: closeNewBoard,
+        openDeleteBoardModal: openDeleteBoardModal,
+        openEditBoardModal: openEditBoardModal,
         handleClickOnDelete: handleClickOnDelete,
         handleClickOnEdit: handleClickOnEdit,
+        closeDeleteBoardModal: closeDeleteBoardModal,
     };
 
     return (

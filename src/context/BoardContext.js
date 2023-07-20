@@ -10,27 +10,19 @@ export const BoardProvider = ( {children} ) => {
     const [columns, setColumns] = useState([])
     const [newColumns, setNewColumns] = useState([{name: "Todo", tasks: []}, {name: "Doing", tasks: []}])
     const [boardName, setBoardName] = useState("")
-   
-    useEffect(() => {
-      const storedBoards = JSON.parse(localStorage.getItem("boards"));
-      if(storedBoards) {
-        setboardList(storedBoards)
-      }
-    }, []);
-    
-    useEffect(() => {
-      Array.from(boardList).forEach(board => {
-         if(selectedBoard === board.name) {
-           setColumns(board.columns)
-         }
-      })
-      
-   }, [selectedBoard]);
- 
-   useEffect(() => {
-       setBoardNumber(Array.from(boardList).length)
-   });
 
+    const deleteBoardOnClick = () => {
+      const updatedList = boardList.filter(board => !(board.name === selectedBoard))
+      setboardList(updatedList)
+       if(updatedList.length > 0) {
+        setselectedBoard(updatedList[0].name)
+      } else {
+        setColumns([])
+        setselectedBoard(null)
+      }
+      localStorage.setItem("boards", JSON.stringify(updatedList))
+     };
+   
     const AddNewBoard = () => {
       const updatedList = [...boardList, {name: boardName, columns: newColumns}]
       setboardList(updatedList)
@@ -39,7 +31,6 @@ export const BoardProvider = ( {children} ) => {
 
     const handleChangeBoardName = (event) => {
       setBoardName(event.target.value)
-      console.log(event.target.value)
     };
 
     const clickOnNewColumn = () => {
@@ -60,6 +51,26 @@ export const BoardProvider = ( {children} ) => {
         })
       };
 
+      useEffect(() => {
+        const storedBoards = JSON.parse(localStorage.getItem("boards"));
+        if(storedBoards) {
+          setboardList(storedBoards)
+        }
+      }, []);
+      
+      useEffect(() => {
+        Array.from(boardList).forEach(board => {
+           if(selectedBoard === board.name) {
+             setColumns(board.columns)
+           }
+        })
+        
+     }, [selectedBoard, deleteBoardOnClick]);
+   
+     useEffect(() => {
+         setBoardNumber(Array.from(boardList).length)
+     });
+
     const contextValue = {
         boardList: boardList,
         selectedBoard: selectedBoard,
@@ -71,6 +82,7 @@ export const BoardProvider = ( {children} ) => {
         clickOnNewColumn: clickOnNewColumn,
         deleteColumnOnClick: deleteColumnOnClick,
         handleChangeBoardName: handleChangeBoardName,
+        deleteBoardOnClick: deleteBoardOnClick,
         AddNewBoard: AddNewBoard,
     }
 

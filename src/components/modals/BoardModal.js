@@ -1,6 +1,6 @@
-import BoardOverview from "../BoardOverview"
-import DarkModePanel from "../DarkModePanel"
-import DarkModeContext from "../context/DarkModeContext"
+import BoardOverview from "../../BoardOverview"
+import DarkModePanel from "../../DarkModePanel"
+import DarkModeContext from "../../context/DarkModeContext"
 import { useContext } from "react"
 
 const BoardModal = () => {

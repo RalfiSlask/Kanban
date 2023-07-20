@@ -1,6 +1,6 @@
-import logoAddTask from "../assets/icon-add-task-mobile.svg";
+import logoAddTask from "../../assets/icon-add-task-mobile.svg";
 import { useContext } from "react";
-import Context from "../context/Context";
+import Context from "../../context/Context";
 
 const ButtonAddNewTask = () => {
   const { isMobile } = useContext(Context)

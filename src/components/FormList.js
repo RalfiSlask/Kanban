@@ -7,7 +7,12 @@ const FormList = ( {title, inputs, onClick } ) => {
           <label className="text-[12px] font-bold text-mediumGray">{title}</label>
             <div className="flex flex-col gap-3 mt-[8px]">
             {inputs.map((input, index) => (
-                <FormComponent key={index} id={index} name={input.name} onClick={onClick}/>
+                <FormComponent 
+                  key={index} 
+                  id={index} 
+                  name={input.name} 
+                  onClick={onClick} 
+                  />
             ))}
             </div>
         </form>

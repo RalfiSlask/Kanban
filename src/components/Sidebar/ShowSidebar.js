@@ -1,6 +1,6 @@
-import logoShowSidebar from "./assets/icon-show-sidebar.svg";
+import logoShowSidebar from "../../assets/icon-show-sidebar.svg";
 import { useContext } from "react";
-import Context from "./context/Context";
+import Context from "../../context/Context";
 
 const ShowSidebar = () => {
   const { openSidebarOnClick } = useContext(Context);

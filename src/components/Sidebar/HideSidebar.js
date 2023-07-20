@@ -1,7 +1,7 @@
-import { ReactComponent as LogoHideSidebar} from "./assets/icon-hide-sidebar.svg";
+import { ReactComponent as LogoHideSidebar} from "../../assets/icon-hide-sidebar.svg";
 import { useContext } from "react";
-import Context from "./context/Context";
-import DarkModeContext from "./context/DarkModeContext";
+import Context from "../../context/Context";
+import DarkModeContext from "../../context/DarkModeContext";
 
 const HideSidebar = () => {
   const { closeSidebarOnClick } = useContext(Context);

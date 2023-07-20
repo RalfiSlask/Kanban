@@ -1,4 +1,4 @@
-import DarkModeContext from "../context/DarkModeContext"
+import DarkModeContext from "../../context/DarkModeContext"
 import { useContext } from "react"
 
 const AddNewTaskModal = () => {
