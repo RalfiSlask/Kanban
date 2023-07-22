@@ -1,21 +1,16 @@
 import DarkModeContext from "../../context/DarkModeContext"
 import Context from "../../context/Context";
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import ButtonAddNewTask from "./ButtonAddNewTask";
 import logoEllipsis from "../../assets/icon-vertical-ellipsis.svg";
 import BoardModal from "../modals/BoardModal";
 import BoardSelector from "./BoardSelector";
 import MobileLogo from "./MobileLogo";
-import EditDeleteBoard from "../modals/EditDeleteBoard";
+import ChangeBoardModal from "../modals/change/ChangeBoardModal";
 
 const Header = () => {
-    const [isButtonClicked, setIsButtonClicked] = useState(false)
     const { isDarkMode } = useContext(DarkModeContext); 
     const { openModal, handlePlatformClick, toggleChangeBoardModal, openChangeBoardModal } = useContext(Context);
-
-    const handleButtonClick = () => {
-        setIsButtonClicked(prevState => !prevState)
-    };
 
   return (
     <header className={`${isDarkMode ? "bg-darkGrey text-white" : "bg-white text-black"} h-16 xl:h-24 md:h-20 w-[100%] flex justify-center relative md:pl-3 md:pr-3 xl:pl-6 xl:pr-6`}>
@@ -29,9 +24,9 @@ const Header = () => {
             </div>
             {openModal && <BoardModal />}
             <div className="flex items-center relative">
-                <ButtonAddNewTask onClick={handleButtonClick}/> 
+                <ButtonAddNewTask /> 
                 <img onClick={toggleChangeBoardModal} src={logoEllipsis} alt="ellipsis" className="ml-4 cursor-pointer"/> 
-                {openChangeBoardModal && <EditDeleteBoard />}
+                {openChangeBoardModal && <ChangeBoardModal />}
             </div>
         
         </div>

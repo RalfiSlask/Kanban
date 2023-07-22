@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
-import FormContext from "../context/FormContext";
-import BoardContext from "../context/BoardContext";
+import FormContext from "../../../context/FormContext";
+import BoardContext from "../../../context/BoardContext";
 
 const TitleInput = ( {title, placeholder, onChange, value} ) => {
   const { errorText, setBoardError, boardError, buttonPressed } = useContext(FormContext)

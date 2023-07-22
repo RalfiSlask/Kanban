@@ -1,6 +1,6 @@
 import { useState } from "react";
-import logoChevronUp from "../../assets/icon-chevron-up.svg";
-import logoChevronDown from "../../assets/icon-chevron-down.svg";
+import logoChevronUp from "../../../assets/icon-chevron-up.svg";
+import logoChevronDown from "../../../assets/icon-chevron-down.svg";
 import CurrenStatusSelector from "./CurrenStatusSelector";
 
 const CurrentStatus = ( {input} ) => {

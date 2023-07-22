@@ -1,5 +1,5 @@
-import BoardContext from "../../context/BoardContext"
-import DarkModeContext from "../../context/DarkModeContext"
+import BoardContext from "../../../context/BoardContext"
+import DarkModeContext from "../../../context/DarkModeContext"
 import { useContext } from "react"
 
 const CurrenStatusSelector = ( {setStatus} ) => {

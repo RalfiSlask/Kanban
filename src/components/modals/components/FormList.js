@@ -1,4 +1,4 @@
-import BoardContext from "../context/BoardContext";
+import BoardContext from "../../../context/BoardContext";
 import FormComponent from "./FormComponent";
 import { useContext } from "react"
 

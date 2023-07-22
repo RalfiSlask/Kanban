@@ -11,6 +11,11 @@ export const BoardProvider = ( {children} ) => {
     const [newColumns, setNewColumns] = useState([{name: "Todo", tasks: []}, {name: "Doing", tasks: []}])
     const [boardName, setBoardName] = useState("")
     const [task, setTask] = useState("")
+    const [NewSubtasks, setNewSubtasks] = useState([{title: "", isCompleted: ""}, {title: "", isCompleted: ""}])
+  
+    useEffect(() => {
+      console.log(columns)
+    })
 
     const deleteBoardOnClick = () => {
       const updatedList = boardList.filter(board => !(board.name === selectedBoard))
@@ -40,6 +45,10 @@ export const BoardProvider = ( {children} ) => {
 
     const addColumn = () => {
       setColumns(prev => [...prev, {name: "", tasks: []}])
+    };
+
+    const addSubtask = () => {
+      setNewSubtasks(prev => [...prev, {title: "", isCompleted: false}])
     };
 
     const deleteInputOnClick = (id, inputs, setInputs) => {
@@ -77,6 +86,7 @@ export const BoardProvider = ( {children} ) => {
      });
 
     const contextValue = {
+        // states
         boardList: boardList,
         selectedBoard: selectedBoard,
         newColumns: newColumns,
@@ -84,7 +94,13 @@ export const BoardProvider = ( {children} ) => {
         columns: columns,
         boardName: boardName,
         task: task,
+        newSubtasks: NewSubtasks,
+        // setters
+        setNewSubtasks: setNewSubtasks,
         setTask: setTask,
+        setNewColumns: setNewColumns,
+        setColumns: setColumns,
+        // functions
         handleClickOnBoard: handleClickOnBoard,
         clickOnNewColumn: clickOnNewColumn,
         addColumn: addColumn,
@@ -92,8 +108,7 @@ export const BoardProvider = ( {children} ) => {
         deleteBoardOnClick: deleteBoardOnClick,
         AddNewBoard: AddNewBoard,
         deleteInputOnClick: deleteInputOnClick,
-        setNewColumns: setNewColumns,
-        setColumns: setColumns,
+        addSubtask: addSubtask,
     }
 
     return (

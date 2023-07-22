@@ -1,6 +1,6 @@
-import {ReactComponent as LogoCross} from "../assets/icon-cross.svg";
+import { ReactComponent as LogoCross } from "../../../assets/icon-cross.svg";
 import { useState, useContext, useEffect } from "react"
-import FormContext from "../context/FormContext";
+import FormContext from "../../../context/FormContext";
 
 const FormComponent = ( {id, name, onClick} ) => {
     const [input, setInput] = useState(name)

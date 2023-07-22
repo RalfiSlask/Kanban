@@ -5,17 +5,18 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Lightbox from "./ui/Lightbox";
 import ShowSidebar from "./components/Sidebar/ShowSidebar";
 import BoardSection from "./components/board/BoardSection";
-import AddNewBoardModal from "./components/modals/AddNewBoardModal";
-import DeleteBoardModal from "./components/modals/DeleteBoardModal";
-import EditBoardModal from "./components/modals/EditBoardModal";
-import DeleteTaskModal from "./components/modals/DeleteTaskModal";
+import AddNewBoardModal from "./components/modals/create/AddNewBoardModal";
+import DeleteBoardModal from "./components/modals/delete/DeleteBoardModal";
+import EditBoardModal from "./components/modals/edit/EditBoardModal";
+import DeleteTaskModal from "./components/modals/delete/DeleteTaskModal";
 import TaskModal from "./components/modals/TaskModal";
-import EditTaskModal from "./components/modals/EditTaskModal";
+import EditTaskModal from "./components/modals/edit/EditTaskModal";
+import AddNewTaskModal from "./components/modals/create/AddNewTaskModal";
 
 const MainSection = () => {
     const { isDarkMode } = useContext(DarkModeContext);
-    const { lightboxActive, openEditTaskModal, openDeleteTaskModal, isMobile, sidebarOpen, openTaskModal, openNewBoardModal, openDeleteBoardModal, openEditBoardModal } = useContext(Context)
-
+    const { lightboxActive, openNewTaskModal, openEditTaskModal, openDeleteTaskModal, isMobile, sidebarOpen, 
+      openTaskModal, openNewBoardModal, openDeleteBoardModal, openEditBoardModal } = useContext(Context)
 
   return (
     <main className={`${isDarkMode ? "bg-darkBG" : "bg-lightBG"} text-gray-500 flex justify-center h-[100%] w-[100%]`}>
@@ -29,6 +30,7 @@ const MainSection = () => {
         {openDeleteBoardModal && <DeleteBoardModal />}
         {openDeleteTaskModal && <DeleteTaskModal />}
         {openEditTaskModal && <EditTaskModal />}
+        {openNewTaskModal && <AddNewTaskModal />}
     </main>
   )
 }

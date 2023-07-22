@@ -1,7 +1,6 @@
-import DarkModeContext from "../../context/DarkModeContext";
+import DarkModeContext from "../../../context/DarkModeContext";
 import { useContext, useEffect, useState } from "react";
-import logoCheck from "../../assets/icon-check.svg";
-
+import logoCheck from "../../../assets/icon-check.svg";
 
 const SubtaskContainer = ( {id, subtask} ) => {
     const { isDarkMode } = useContext(DarkModeContext)

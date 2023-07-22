@@ -1,8 +1,8 @@
-import BoardContext from "../../context/BoardContext";
-import DarkModeContext from "../../context/DarkModeContext";
-import Context from "../../context/Context";
-import ButtonLightPurple from "../../ui/ButtonLightPurple";
-import ButtonRed from "../../ui/ButtonRed";
+import BoardContext from "../../../context/BoardContext";
+import DarkModeContext from "../../../context/DarkModeContext";
+import Context from "../../../context/Context";
+import ButtonLightPurple from "../../../ui/ButtonLightPurple";
+import ButtonRed from "../../../ui/ButtonRed";
 import { useContext } from "react";
 
 const DeleteBoardModal = () => {

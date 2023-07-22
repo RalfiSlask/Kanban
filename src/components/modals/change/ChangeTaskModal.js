@@ -1,5 +1,5 @@
-import Context from "../../context/Context";
-import DarkModeContext from "../../context/DarkModeContext";
+import Context from "../../../context/Context";
+import DarkModeContext from "../../../context/DarkModeContext";
 import { useContext } from "react";
 
 const ChangeTaskModalk = () => {

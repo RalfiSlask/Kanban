@@ -14,7 +14,7 @@ export const ContextProvider = ( {children} ) => {
     const [openEditBoardModal, setEditBoardModal] = useState(false);
     const [openTaskModal, setOpenTaskModal] = useState(false)
     const [openEditTaskModal, setEditTaskModal] = useState(false)
-    const [openCreateTaskModal, setCreateTaskModal] = useState(false)
+    const [openNewTaskModal, setNewTaskModal] = useState(false)
     const [openChangeTaskModal, setChangeTaskModal] = useState(false)
     const [openDeleteTaskModal, setDeleteTaskModal] = useState(false)
 
@@ -77,10 +77,10 @@ export const ContextProvider = ( {children} ) => {
     }, [windowWidth]);
 
     const contextValue = {
+        // states
         isMobile: isMobile,
         sidebarOpen: sidebarOpen,
         lightboxActive: lightboxActive,
-        // Modal booleans
         openModal: openModal,
         openEditTaskModal: openEditTaskModal,
         openNewBoardModal: openNewBoardModal,
@@ -90,6 +90,7 @@ export const ContextProvider = ( {children} ) => {
         openDeleteBoardModal: openDeleteBoardModal,
         openEditBoardModal: openEditBoardModal,
         openTaskModal: openTaskModal,
+        openNewTaskModal: openNewTaskModal,
         // Modal setters
         setDeleteTaskModal: setDeleteTaskModal,
         setChangeTaskModal: setChangeTaskModal, 
@@ -99,6 +100,7 @@ export const ContextProvider = ( {children} ) => {
         setDeleteBoardModal: setDeleteBoardModal,
         setEditBoardModal: setEditBoardModal,
         setOpenNewBoardModal: setOpenNewBoardModal,
+        setNewTaskModal: setNewTaskModal,
         // functions
         handlePlatformClick: handlePlatformClick,
         toggleChangeBoardModal: toggleChangeBoardModal,
