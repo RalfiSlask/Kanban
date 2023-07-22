@@ -24,6 +24,7 @@ const FormComponent = ( {id, name, onClick} ) => {
         setButtonPressed(false)
     };
 
+
   return (
     <div className="flex items-center justify-between gap-4 md:relative">
          {buttonPressed && error && <p className="text-[12px] font-medium text-red-500 absolute z-50 right-8 top-[165px] md:top-[10px] md:right-[40px] ">{errorText}</p>}

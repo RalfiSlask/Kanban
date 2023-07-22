@@ -3,11 +3,7 @@ import { createContext, useState, useEffect } from "react";
 const Context = createContext({})
 
 export const ContextProvider = ( {children} ) => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const [isMobile, setIsMobile] = useState(true)
     const [openModal, setOpenModal] = useState(false);
-    const [sidebarOpen, setSidebarOpen] = useState(true);
-    const [lightboxActive, setLightboxActive] = useState(false);
     const [openNewBoardModal, setOpenNewBoardModal] = useState(false);
     const [openChangeBoardModal, setOpenChangeBoardModal] = useState(false);
     const [openDeleteBoardModal, setDeleteBoardModal] = useState(false);
@@ -32,13 +28,7 @@ export const ContextProvider = ( {children} ) => {
         setOpenChangeBoardModal(prevState => !prevState)
     };
 
-    const closeSidebarOnClick = () => {
-        setSidebarOpen(false)
-    };
-
-    const openSidebarOnClick = () => {
-        setSidebarOpen(true)
-    };
+    
 
     const handlePlatformClick = () => {
         if(isMobile) {

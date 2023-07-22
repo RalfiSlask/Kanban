@@ -10,6 +10,7 @@ export const BoardProvider = ( {children} ) => {
     const [columns, setColumns] = useState([])
     const [newColumns, setNewColumns] = useState([{name: "Todo", tasks: []}, {name: "Doing", tasks: []}])
     const [boardName, setBoardName] = useState("")
+    const [task, setTask] = useState("")
 
     const deleteBoardOnClick = () => {
       const updatedList = boardList.filter(board => !(board.name === selectedBoard))
@@ -37,10 +38,14 @@ export const BoardProvider = ( {children} ) => {
       setNewColumns(prev => [...prev, {name: "", tasks: []}])
     };
 
-    const deleteColumnOnClick = (id) => {
-      const updatedColumns = [...newColumns]
-      const filteredColumns = updatedColumns.filter((column, index) => !(index === id))
-      setNewColumns(filteredColumns)
+    const addColumn = () => {
+      setColumns(prev => [...prev, {name: "", tasks: []}])
+    };
+
+    const deleteInputOnClick = (id, inputs, setInputs) => {
+      const Inputs = [...inputs]
+      const filteredInputs = Inputs.filter((input, index) => !(index === id))
+      setInputs(filteredInputs)
     };
 
     const handleClickOnBoard = (id) => {
@@ -65,7 +70,7 @@ export const BoardProvider = ( {children} ) => {
            }
         })
         
-     }, [selectedBoard, deleteBoardOnClick]);
+     }, [selectedBoard, boardList]);
    
      useEffect(() => {
          setBoardNumber(Array.from(boardList).length)
@@ -78,12 +83,17 @@ export const BoardProvider = ( {children} ) => {
         boardNumber: boardNumber,
         columns: columns,
         boardName: boardName,
+        task: task,
+        setTask: setTask,
         handleClickOnBoard: handleClickOnBoard,
         clickOnNewColumn: clickOnNewColumn,
-        deleteColumnOnClick: deleteColumnOnClick,
+        addColumn: addColumn,
         handleChangeBoardName: handleChangeBoardName,
         deleteBoardOnClick: deleteBoardOnClick,
         AddNewBoard: AddNewBoard,
+        deleteInputOnClick: deleteInputOnClick,
+        setNewColumns: setNewColumns,
+        setColumns: setColumns,
     }
 
     return (

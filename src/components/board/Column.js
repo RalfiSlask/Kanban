@@ -16,7 +16,7 @@ const Column = ( {id, title, tasks} ) => {
         </div>
         {tasks.map((task, index) => {
             const {subtasks, title} = task;
-           return <Task key={index} title={title} subtasks={subtasks} />
+           return <Task key={index} task={task} />
         })}
         
     </div>

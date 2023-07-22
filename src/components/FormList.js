@@ -1,7 +1,10 @@
+import BoardContext from "../context/BoardContext";
 import FormComponent from "./FormComponent";
+import { useContext } from "react"
 
-const FormList = ( {title, inputs, onClick } ) => {
-
+const FormList = ( {title, inputs, setInputs } ) => {
+  const { deleteInputOnClick } = useContext(BoardContext)
+  
   return (
         <form className="flex flex-col mt-6 mb-4">
           <label className="text-[12px] font-bold text-mediumGray">{title}</label>
@@ -11,7 +14,7 @@ const FormList = ( {title, inputs, onClick } ) => {
                   key={index} 
                   id={index} 
                   name={input.name} 
-                  onClick={onClick} 
+                  onClick={() => deleteInputOnClick(index, inputs, setInputs)} 
                   />
             ))}
             </div>

@@ -15,7 +15,7 @@ const Header = () => {
 
     const handleButtonClick = () => {
         setIsButtonClicked(prevState => !prevState)
-    }
+    };
 
   return (
     <header className={`${isDarkMode ? "bg-darkGrey text-white" : "bg-white text-black"} h-16 xl:h-24 md:h-20 w-[100%] flex justify-center relative md:pl-3 md:pr-3 xl:pl-6 xl:pr-6`}>

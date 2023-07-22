@@ -14,13 +14,14 @@ module.exports = {
         purpleHover: "rgba(168, 164, 255, 1)",
         veryDarkGray: "rgba(32, 33, 44, 1)",
         lightGray: "#F4F7FD",
-        hoverPurple: "rgba(99, 95, 199, 0.1)"
+        hoverPurple: "rgba(99, 95, 199, 0.1)",
+        taskHover: "rgba(99, 95, 199, 0.25)",
       }
     },
     boxShadow: {
       darkShadow: "0px 10px 20px 0px rgba(54, 78, 126, 0.25)",
       lightShadow: "0px 4px 6px 0px rgba(54, 78, 126, 0.10)",
-
+      lightShadowLarge:  "0px 10px 20px 0px rgba(54, 78, 126, 0.10)",
     }
   },
   plugins: [
