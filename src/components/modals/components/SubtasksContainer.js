@@ -1,12 +1,6 @@
-import { useEffect } from "react"
 import SubtaskContainer from "./SubtaskContainer"
 
 const SubtasksContainer = ( {subtasks} ) => {
-
-    useEffect(() => {
-        console.log(subtasks)
-
-    })
 
   return (
     <div>

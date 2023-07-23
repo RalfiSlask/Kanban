@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState} from "react";
+import { createContext, useState} from "react";
 
 const FormContext = createContext({});
 
@@ -15,14 +15,17 @@ export const FormProvider = ( {children} ) => {
      };
 
     const contextValue = {
+        // states
         errorText: errorText,
         boardError: boardError,
-        setBoardError: setBoardError,
-        setButtonPressed: setButtonPressed,
         buttonPressed: buttonPressed,
         inputErrors: inputErrors,
+        // setters
+        setBoardError: setBoardError,
+        setButtonPressed: setButtonPressed,
+        // functions
         checkInputsForErrors: checkInputsForErrors,
-    }
+    };
     
     return (
         <FormContext.Provider value={contextValue}>

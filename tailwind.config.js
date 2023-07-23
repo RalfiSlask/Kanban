@@ -16,6 +16,7 @@ module.exports = {
         lightGray: "#F4F7FD",
         hoverPurple: "rgba(99, 95, 199, 0.1)",
         taskHover: "rgba(99, 95, 199, 0.25)",
+        inputBorder: "rgba(130, 143, 163, 0.25)"
       }
     },
     boxShadow: {

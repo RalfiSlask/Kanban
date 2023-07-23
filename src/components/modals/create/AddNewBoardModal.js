@@ -6,25 +6,24 @@ import ButtonLightPurple from "../../../ui/ButtonLightPurple"
 import ModalHeading from "../components/ModalHeading"
 import FormList from "../components/FormList"
 import TitleInput from "../components/TitleInput"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import FormContext from "../../../context/FormContext"
 
 const AddNewBoardModal = () => {
     const { isDarkMode } = useContext(DarkModeContext)
-    const { newColumns, setNewColumns, clickOnNewColumn, handleChangeBoardName, AddNewBoard } = useContext(BoardContext)
+    const { newColumns, setNewColumns, clickOnNewColumn, AddNewBoard } = useContext(BoardContext)
     const { closeModalOnClick, setOpenNewBoardModal } = useContext(Context)
-    const { boardError, inputErrors, setButtonPressed } = useContext(FormContext)
-
-    const handleChange = (event) => {
-      handleChangeBoardName(event);
-      setButtonPressed(false)
-    };
+    const { boardError, inputErrors, setButtonPressed, buttonPressed } = useContext(FormContext)
     
+    useEffect(() => {
+      console.log(buttonPressed)
+    })
+
     const handleClickNewBoard = () => {
-      setButtonPressed(true)
       if(!boardError && !inputErrors) {
         AddNewBoard();
         closeModalOnClick(setOpenNewBoardModal);
+        setButtonPressed(false)
       } 
     };
 
@@ -36,7 +35,6 @@ const AddNewBoardModal = () => {
         <TitleInput 
           title={"Board Name"} 
           placeholder={"e.g. Web Design"} 
-          onChange={handleChange}
           value={""}
         />
         <FormList 
@@ -50,7 +48,6 @@ const AddNewBoardModal = () => {
         />
         <ButtonPurple 
           text={"Create New Board"} 
-          onClick={handleClickNewBoard}
         />
     </div>
   )

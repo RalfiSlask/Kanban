@@ -11,11 +11,19 @@ export const BoardProvider = ( {children} ) => {
     const [newColumns, setNewColumns] = useState([{name: "Todo", tasks: []}, {name: "Doing", tasks: []}])
     const [boardName, setBoardName] = useState("")
     const [task, setTask] = useState("")
-    const [NewSubtasks, setNewSubtasks] = useState([{title: "", isCompleted: ""}, {title: "", isCompleted: ""}])
-  
+    const [subtasks, setSubtasks] = useState("");
+    const randomPlaceholders = ["Make coffee", "Drink coffee and smile", "clean house", "Build a school out of Lego", "Read a newspaper", "Take up yoga", "Make a origami bird", "Go for a run" , "Sketch your pet", "Bake homemade pizza", "Go for picnic in a park"]
+
+    const pickRandomPlaceholder = () => {
+      const randomIndex = Math.floor(Math.random() * randomPlaceholders.length)
+      const randomPlaceholder = randomPlaceholders[randomIndex]
+      return randomPlaceholder;
+    };
+    
     useEffect(() => {
-      console.log(columns)
-    })
+      const currentTask = {...task}
+      setSubtasks(currentTask.subtasks)
+    }, [task])
 
     const deleteBoardOnClick = () => {
       const updatedList = boardList.filter(board => !(board.name === selectedBoard))
@@ -47,9 +55,10 @@ export const BoardProvider = ( {children} ) => {
       setColumns(prev => [...prev, {name: "", tasks: []}])
     };
 
-    const addSubtask = () => {
-      setNewSubtasks(prev => [...prev, {title: "", isCompleted: false}])
+    const addNewSubtask = () => {
+      setSubtasks(prev => [...prev, {title: "", isCompleted: false}])
     };
+
 
     const deleteInputOnClick = (id, inputs, setInputs) => {
       const Inputs = [...inputs]
@@ -94,9 +103,10 @@ export const BoardProvider = ( {children} ) => {
         columns: columns,
         boardName: boardName,
         task: task,
-        newSubtasks: NewSubtasks,
+        subtasks: subtasks,
+        randomPlaceholders: randomPlaceholders,
         // setters
-        setNewSubtasks: setNewSubtasks,
+        setSubtasks: setSubtasks,
         setTask: setTask,
         setNewColumns: setNewColumns,
         setColumns: setColumns,
@@ -108,7 +118,8 @@ export const BoardProvider = ( {children} ) => {
         deleteBoardOnClick: deleteBoardOnClick,
         AddNewBoard: AddNewBoard,
         deleteInputOnClick: deleteInputOnClick,
-        addSubtask: addSubtask,
+        addNewSubtask: addNewSubtask,
+        pickRandomPlaceholder: pickRandomPlaceholder,
     }
 
     return (

@@ -2,6 +2,7 @@ import { ReactComponent as LogoPlatform} from "../assets/icon-board.svg";
 import DarkModeContext from "../context/DarkModeContext";
 import Context from "../context/Context";
 import { useContext } from "react";
+import BoardContext from "../context/BoardContext";
 
 const ButtonCreateNewBoard = () => {
   const { isDarkMode } = useContext(DarkModeContext)

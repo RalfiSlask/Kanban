@@ -10,7 +10,7 @@ import ChangeTaskModal from "./change/ChangeTaskModal"
 
 const TaskModal = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { task, columns } = useContext(BoardContext)
+  const { task } = useContext(BoardContext)
   const { openChangeTaskModal, setChangeTaskModal } = useContext(Context)
   const { title, description, subtasks, status } = task;
 
@@ -29,7 +29,7 @@ const TaskModal = () => {
       </div>
       <p className="text-[13px] font-medium leading-6 text-mediumGray">{description}</p>
       <SubtasksContainer subtasks={subtasks}/>
-      <CurrentStatus input={status}/>
+      <CurrentStatus input={status} text={"Current Status"}/>
     </div>
   )
 }
