@@ -8,7 +8,7 @@ export const DarkModeProvider = ( {children} ) => {
 
     const toggleDarkMode = () => {
         setIsDarkMode(prevMode => !prevMode)
-    }
+    };
     
     const handleChangeOnInput = (event) => {
       setValue(event.target.value)
@@ -16,7 +16,7 @@ export const DarkModeProvider = ( {children} ) => {
 
     const handleClick = () => {
       toggleDarkMode()
-    }
+    };
 
     const contextValue = {
         value: value,

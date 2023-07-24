@@ -15,7 +15,6 @@ const Column = ( {id, title, tasks} ) => {
             </div>
         </div>
         {tasks.map((task, index) => {
-            const {subtasks, title} = task;
            return <Task key={index} task={task} />
         })}
         

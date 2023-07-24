@@ -1,12 +1,17 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import FormContext from "../../../context/FormContext";
-import BoardContext from "../../../context/BoardContext";
 import DarkModeContext from "../../../context/DarkModeContext";
 import ModalLabel from "./ModalLabel";
 
 const DescriptionInput = ( {placeholder, text, value} ) => {
     const { isDarkMode } = useContext(DarkModeContext)
     const { errorText, boardError, buttonPressed } = useContext(FormContext)
+    const [input, setInput] = useState("")
+
+    const handleChange = (event) => {
+      setInput(event.target.value)
+      console.log(event.target.value)
+    };
 
   return (
     <form className="flex flex-col gap-2 w-[100%] mt-6 relative">
@@ -16,7 +21,7 @@ const DescriptionInput = ( {placeholder, text, value} ) => {
             name="description" 
             cols="30" 
             rows="10" 
-            /*  onChange={(e) => {onChange(e)}}  */
+            onChange={(e) => {handleChange(e)}}
             defaultValue={value} 
             spellCheck={false} 
             placeholder={placeholder} 

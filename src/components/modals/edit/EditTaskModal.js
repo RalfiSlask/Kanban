@@ -11,14 +11,13 @@ import { useContext, useEffect } from "react"
 
 const EditTaskModal = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { task, subtasks, setSubtasks, addNewSubtask, placeholders, deletePlaceholderOnClick } = useContext(BoardContext)
+  const { task, subtasks, setSubtasks, addNewSubtask } = useContext(BoardContext)
   const { title, description, status } = task;
 
   useEffect(() => {
     console.log(task)
     console.log(subtasks)
   })
-
 
   return (
        <div className={`${isDarkMode ? "bg-darkGrey text-white" : "bg-white text-black"} top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-20 w-[343px] md:w-[480px] p-[24px] md:p-[32px] rounded-[6px]`}>

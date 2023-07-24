@@ -19,7 +19,7 @@ const TitleInput = ( {title, placeholder, value} ) => {
   return (
     <form className="flex flex-col gap-2 w-[100%] mt-6">
         <ModalLabel text={title}/>
-        <Input placeholder={placeholder} value={value}/>
+        <Input placeholder={placeholder} value={value} type={"title"}/>
     </form>
   )
 }

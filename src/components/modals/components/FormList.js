@@ -3,15 +3,8 @@ import FormComponent from "./FormComponent";
 import { useContext } from "react"
 import ModalLabel from "./ModalLabel";
 
-const FormList = ( {title, inputs, setInputs, removePlaceholder } ) => {
+const FormList = ( {title, inputs, setInputs } ) => {
   const { deleteInputOnClick } = useContext(BoardContext)
-
-  const handleClick = (index) => {
-    if(removePlaceholder) {
-      removePlaceholder(index)
-    }
-    deleteInputOnClick(index, inputs, setInputs)
-  };
 
   return (
         <form className="flex flex-col mt-6">
@@ -22,7 +15,7 @@ const FormList = ( {title, inputs, setInputs, removePlaceholder } ) => {
                   key={index} 
                   id={index} 
                   name={input.name ? input.name : input.title} 
-                  onClick={() => {handleClick(index, inputs, setInputs)}}
+                  onClick={() => {deleteInputOnClick(index, inputs, setInputs)}}
                   />
             ))}
             </div>

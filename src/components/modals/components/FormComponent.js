@@ -8,15 +8,15 @@ const FormComponent = ( {id, name, onClick } ) => {
     const { buttonPressed } = useContext(FormContext)
     const { pickRandomPlaceholder } = useContext(BoardContext)
     const [isLogoRed, setIsLogoRed] = useState(false)
-    const [placeholder, setPlaceholder] = useState("")
-    
-
+    const [placeholder, setPlaceholder] = useState(pickRandomPlaceholder)
+  
   return (
     <div className="flex items-center justify-between gap-4 md:relative">
         <Input 
           placeholder={placeholder} 
           value={name}
           setIsLogoRed={setIsLogoRed}
+          id={id}
         />
         <LogoCross 
           className={`${buttonPressed && isLogoRed ? "fill-[#EA5555]" : "fill-mediumGray"} cursor-pointer`}

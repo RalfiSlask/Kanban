@@ -2,9 +2,9 @@ import DarkModeContext from "../../../context/DarkModeContext";
 import FormContext from "../../../context/FormContext";
 import { useContext, useEffect, useState } from "react";
 
-const Input = ( {placeholder, value, setIsLogoRed} ) => {
+const Input = ( {id, placeholder, value, setIsLogoRed, type} ) => {
     const { isDarkMode } = useContext(DarkModeContext)
-    const { buttonPressed, setButtonPressed, errorText } = useContext(FormContext)
+    const { buttonPressed, setButtonPressed, errorText, updateNewTask} = useContext(FormContext)
     const [error, setError] = useState(false);
     const [input, setInput] = useState(value)
 
@@ -15,7 +15,6 @@ const Input = ( {placeholder, value, setIsLogoRed} ) => {
 
     useEffect(() => {
         input === "" ? setError(true) : setError(false)
-        console.log(input)
     }, [input, buttonPressed])
 
     useEffect(() => {
@@ -23,6 +22,10 @@ const Input = ( {placeholder, value, setIsLogoRed} ) => {
             input === "" ? setIsLogoRed(true) : setIsLogoRed(false)
         } 
     }, [input, buttonPressed])
+
+    useEffect(() => {
+        updateNewTask(input, type)
+    }, [buttonPressed])
 
   return (
     <div className="w-[100%] relative">
