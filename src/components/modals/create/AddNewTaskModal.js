@@ -15,16 +15,6 @@ const AddNewTaskModal = () => {
   const { columns, subtasks, setSubtasks, addNewSubtask } = useContext(BoardContext)
   const { buttonPressed } = useContext(FormContext);
 
-
-
-
-
-  useEffect(() => {
-    if(buttonPressed) {
-      console.log("hej")
-    }
-  })
-
   return (
        <div className={`${isDarkMode ? "bg-darkGrey text-white" : "bg-white text-black"} top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-20 w-[343px] md:w-[480px] p-[24px] md:p-[32px] rounded-[6px]`}>
         <ModalHeading 

@@ -1,10 +1,10 @@
 import { ReactComponent as LogoCross } from "../../../assets/icon-cross.svg";
-import { useState, useContext, useEffect } from "react"
+import { useState, useContext } from "react"
 import FormContext from "../../../context/FormContext";
 import Input from "./Input";
 import BoardContext from "../../../context/BoardContext";
 
-const FormComponent = ( {id, name, onClick } ) => {
+const FormComponent = ( {id, name, onClick, onChange } ) => {
     const { buttonPressed } = useContext(FormContext)
     const { pickRandomPlaceholder } = useContext(BoardContext)
     const [isLogoRed, setIsLogoRed] = useState(false)
@@ -17,6 +17,7 @@ const FormComponent = ( {id, name, onClick } ) => {
           value={name}
           setIsLogoRed={setIsLogoRed}
           id={id}
+          onChange={onChange}
         />
         <LogoCross 
           className={`${buttonPressed && isLogoRed ? "fill-[#EA5555]" : "fill-mediumGray"} cursor-pointer`}

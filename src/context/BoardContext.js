@@ -10,8 +10,11 @@ export const BoardProvider = ( {children} ) => {
     const [columns, setColumns] = useState([])
     const [newColumns, setNewColumns] = useState([{name: "Todo", tasks: []}, {name: "Doing", tasks: []}])
     const [boardName, setBoardName] = useState("")
+    const [taskName, setTaskName] = useState("")
+    const [description, setDescription] = useState("")
     const [task, setTask] = useState("")
-    const [subtasks, setSubtasks] = useState("");
+    const [subtasks, setSubtasks] = useState([]);
+    const [newTask, setNewTask] = useState({title: "", description: "", status: "", subtasks: []})
     const randomPlaceholders = ["Make coffee", "Drink coffee and smile", "clean house", "Build a school out of Lego", "Read a newspaper", "Take up yoga", "Make a origami bird", "Go for a run" , "Sketch your pet", "Bake homemade pizza", "Go for picnic in a park"]
 
     const pickRandomPlaceholder = () => {
@@ -21,7 +24,7 @@ export const BoardProvider = ( {children} ) => {
     };
     
     useEffect(() => {
-      const currentTask = {...task}
+      const currentTask = {...task} 
       setSubtasks(currentTask.subtasks)
     }, [task])
 
@@ -43,9 +46,35 @@ export const BoardProvider = ( {children} ) => {
       localStorage.setItem("boards", JSON.stringify(updatedList))
     };
 
-    const handleChangeBoardName = (event) => {
-      setBoardName(event.target.value)
+    const handleChangeTitle = (title, event) => {
+      if(title === "Board Name") {
+        setBoardName(event.target.value)
+      } else if(title === "Title") {
+        setTaskName(event.target.value)
+      } 
     };
+
+    const handleChangeDescription = (event) => {
+      setDescription(event.target.value)
+    };
+
+    const handleChangeListInputs = (index, type, event) => {
+      if(type === "subtask") {
+        const updatedSubtasks = [...subtasks]
+        updatedSubtasks[index] =  {...updatedSubtasks[index], title: event.target.value, isCompleted:false}
+        setSubtasks(updatedSubtasks)
+      } else if(type === "column") {
+        const updatedColumns = [...newColumns]
+        updatedColumns[index] =  {...updatedColumns[index], name: event.target.value, tasks: []}
+        setNewColumns(updatedColumns)
+      }
+    };
+
+    useEffect(() => {
+      console.log("subtasks: ", subtasks)
+      console.log("boardcolumns: ", newColumns)
+      console.log(columns)
+    })
 
     const clickOnNewColumn = () => {
       setNewColumns(prev => [...prev, {name: "", tasks: []}])
@@ -58,7 +87,6 @@ export const BoardProvider = ( {children} ) => {
     const addNewSubtask = () => {
       setSubtasks(prev => [...prev, {title: "", isCompleted: false}])
     };
-
 
     const deleteInputOnClick = (id, inputs, setInputs) => {
       const Inputs = [...inputs]
@@ -114,12 +142,14 @@ export const BoardProvider = ( {children} ) => {
         handleClickOnBoard: handleClickOnBoard,
         clickOnNewColumn: clickOnNewColumn,
         addColumn: addColumn,
-        handleChangeBoardName: handleChangeBoardName,
         deleteBoardOnClick: deleteBoardOnClick,
         AddNewBoard: AddNewBoard,
         deleteInputOnClick: deleteInputOnClick,
         addNewSubtask: addNewSubtask,
         pickRandomPlaceholder: pickRandomPlaceholder,
+        handleChangeDescription: handleChangeDescription,
+        handleChangeTitle: handleChangeTitle,
+        handleChangeListInputs: handleChangeListInputs,
     }
 
     return (

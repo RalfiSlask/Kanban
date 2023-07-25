@@ -1,16 +1,17 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import FormContext from "../../../context/FormContext";
 import DarkModeContext from "../../../context/DarkModeContext";
 import ModalLabel from "./ModalLabel";
+import BoardContext from "../../../context/BoardContext";
 
-const DescriptionInput = ( {placeholder, text, value} ) => {
+const DescriptionInput = ( {placeholder, text, value, type} ) => {
     const { isDarkMode } = useContext(DarkModeContext)
-    const { errorText, boardError, buttonPressed } = useContext(FormContext)
-    const [input, setInput] = useState("")
+    const { errorText, boardError, buttonPressed, setButtonPressed} = useContext(FormContext)
+    const { handleChangeDescription } = useContext(BoardContext)
 
     const handleChange = (event) => {
-      setInput(event.target.value)
-      console.log(event.target.value)
+      handleChangeDescription(event)
+      setButtonPressed(false)
     };
 
   return (
