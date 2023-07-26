@@ -7,13 +7,29 @@ import BoardContext from "../../../context/BoardContext"
 import DarkModeContext from "../../../context/DarkModeContext"
 import CurrentStatus from "../components/CurrentStatus"
 import DescriptionInput from "../components/DescriptionInput"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import FormContext from "../../../context/FormContext"
+import ModalContext from "../../../context/ModalContext"
 
 const AddNewTaskModal = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { columns, subtasks, setSubtasks, addNewSubtask } = useContext(BoardContext)
-  const { buttonPressed } = useContext(FormContext);
+  const { columns, subtasks, setSubtasks, addNewSubtask, checkValidity, addNewTask, isValid, setIsValid } = useContext(BoardContext)
+  const { setButtonPressed } = useContext(FormContext);
+  const { closeModalOnClick, setNewTaskModal } = useContext(ModalContext)
+
+  const handleClick = () => {
+    setButtonPressed(true)
+    checkValidity()
+  };
+
+  useEffect(() => {
+    if(isValid) {
+      addNewTask()
+      closeModalOnClick(setNewTaskModal)
+      setIsValid(false)
+    }
+  }, [isValid])
+
 
   return (
        <div className={`${isDarkMode ? "bg-darkGrey text-white" : "bg-white text-black"} top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-20 w-[343px] md:w-[480px] p-[24px] md:p-[32px] rounded-[6px]`}>
@@ -46,6 +62,7 @@ const AddNewTaskModal = () => {
         />
         <ButtonPurple 
           text={"Create Task"} 
+          onClick={handleClick}
         />
     </div>
   )

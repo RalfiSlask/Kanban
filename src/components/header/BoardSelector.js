@@ -1,11 +1,11 @@
 import logoChevronUp from "../../assets/icon-chevron-up.svg";
 import logoChevronDown from "../../assets/icon-chevron-down.svg";
 import { useContext } from "react";
-import Context from "../../context/Context";
+import ModalContext from "../../context/ModalContext";
 import BoardContext from "../../context/BoardContext";
 
 const BoardSelector = ( {onClick, clicked} ) => {
-  const { isMobile } = useContext(Context)
+  const { isMobile } = useContext(ModalContext)
   const { selectedBoard } = useContext(BoardContext)
 
   return (

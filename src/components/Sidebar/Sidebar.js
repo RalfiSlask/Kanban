@@ -4,11 +4,11 @@ import DarkModePanel from "../../DarkModePanel"
 import MobileLogo from "../header/MobileLogo"
 import DarkModeContext from "../../context/DarkModeContext"
 import HideSidebar from "./HideSidebar"
-import Context from "../../context/Context"
+import ModalContext from "../../context/ModalContext"
 
 const Sidebar = () => {
   const { isDarkMode } = useContext(DarkModeContext);
-  const { sidebarOpen } = useContext(Context);
+  const { sidebarOpen } = useContext(ModalContext);
 
   return (
     <div className={`

@@ -1,11 +1,11 @@
 import { ReactComponent as LogoPlatform} from "../assets/icon-board.svg";
 import DarkModeContext from "../context/DarkModeContext";
-import Context from "../context/Context";
+import ModalContext from "../context/ModalContext";
 import { useContext } from "react";
 
 const ButtonCreateNewBoard = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { openModalOnClick, setOpenModal, setOpenNewBoardModal } = useContext(Context)
+  const { openModalOnClick, setOpenModal, setOpenNewBoardModal } = useContext(ModalContext)
 
   const handleClick = () => {
     openModalOnClick(setOpenNewBoardModal)

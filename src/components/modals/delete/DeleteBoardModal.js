@@ -1,6 +1,6 @@
 import BoardContext from "../../../context/BoardContext";
 import DarkModeContext from "../../../context/DarkModeContext";
-import Context from "../../../context/Context";
+import ModalContext from "../../../context/ModalContext";
 import ButtonLightPurple from "../../../ui/ButtonLightPurple";
 import ButtonRed from "../../../ui/ButtonRed";
 import { useContext } from "react";
@@ -8,7 +8,7 @@ import { useContext } from "react";
 const DeleteBoardModal = () => {
     const { isDarkMode } = useContext(DarkModeContext)
     const { selectedBoard, deleteBoardOnClick } = useContext(BoardContext)
-    const { closeModalOnClick, setDeleteBoardModal } = useContext(Context)
+    const { closeModalOnClick, setDeleteBoardModal } = useContext(ModalContext)
 
     const handleClickOnDelete = () => {
       deleteBoardOnClick()

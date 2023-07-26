@@ -6,10 +6,18 @@ import BoardContext from "../../../context/BoardContext";
 
 const TitleInput = ( {title, placeholder, value} ) => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { buttonPressed, setButtonPressed, errorText, updateTask} = useContext(FormContext)
-  const { handleChangeTitle } = useContext(BoardContext)
+  const { buttonPressed, setButtonPressed, errorText} = useContext(FormContext)
+  const { handleChangeTitle, setTaskName, setBoardName } = useContext(BoardContext)
   const [error, setError] = useState(false);
-  const [titleInput, setTitleInput] = useState("")
+  const [titleInput, setTitleInput] = useState(value)
+
+  useEffect(() => {
+    if(title === "Title") {
+      setTaskName(value)
+    } else if(title === "Board Name") {
+      setBoardName(value)
+    }
+  }, [])
 
   const handleChange = (event) => {
     setTitleInput(event.target.value)

@@ -1,10 +1,10 @@
 import ColumnBall from "./ColumnBall"
 import Task from "./Task"
-import Context from "../../context/Context"
+import ModalContext from "../../context/ModalContext"
 import { useContext } from "react"
 
 const Column = ( {id, title, tasks} ) => {
-    const { isMobile } = useContext(Context)
+    const { isMobile } = useContext(ModalContext)
     
   return (
     <div className={`${isMobile ? "w-[350px]" : "w-[280px]"} flex flex-col gap-6`}>

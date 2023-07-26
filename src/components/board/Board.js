@@ -1,12 +1,12 @@
 import { useContext} from "react";
 import BoardContext from "../../context/BoardContext";
 import Column from "./Column";
-import Context from "../../context/Context";
+import ModalContext from "../../context/ModalContext";
 import NewColumnColumn from "./NewColumnColumn";
 
 const Board = () => {
     const { columns } = useContext(BoardContext)
-    const { isMobile } = useContext(Context)
+    const { isMobile } = useContext(ModalContext)
 
   return (
     <div className={`${isMobile ? "flex-col items-center" : "flex-row"} flex gap-6 w-[100%]`}>

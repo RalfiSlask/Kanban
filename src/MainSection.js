@@ -1,5 +1,5 @@
 import DarkModeContext from "./context/DarkModeContext"
-import Context from "./context/Context";
+import ModalContext from "./context/ModalContext";
 import { useContext } from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Lightbox from "./ui/Lightbox";
@@ -16,7 +16,7 @@ import AddNewTaskModal from "./components/modals/create/AddNewTaskModal";
 const MainSection = () => {
     const { isDarkMode } = useContext(DarkModeContext);
     const { lightboxActive, openNewTaskModal, openEditTaskModal, openDeleteTaskModal, isMobile, sidebarOpen, 
-      openTaskModal, openNewBoardModal, openDeleteBoardModal, openEditBoardModal } = useContext(Context)
+      openTaskModal, openNewBoardModal, openDeleteBoardModal, openEditBoardModal } = useContext(ModalContext)
 
   return (
     <main className={`${isDarkMode ? "bg-darkBG" : "bg-lightBG"} text-gray-500 flex justify-center h-[100%] w-[100%]`}>

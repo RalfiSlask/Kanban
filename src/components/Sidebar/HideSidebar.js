@@ -1,10 +1,10 @@
 import { ReactComponent as LogoHideSidebar} from "../../assets/icon-hide-sidebar.svg";
 import { useContext } from "react";
-import Context from "../../context/Context";
+import ModalContext from "../../context/ModalContext";
 import DarkModeContext from "../../context/DarkModeContext";
 
 const HideSidebar = () => {
-  const { closeSidebarOnClick } = useContext(Context);
+  const { closeSidebarOnClick } = useContext(ModalContext);
   const { isDarkMode } = useContext(DarkModeContext)
 
   return (

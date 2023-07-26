@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 
-const Context = createContext({})
+const ModalContext = createContext({})
 
-export const ContextProvider = ( {children} ) => {
+export const ModalContextProvider = ( {children} ) => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isMobile, setIsMobile] = useState(true)
     const [openModal, setOpenModal] = useState(false);
@@ -114,10 +114,10 @@ export const ContextProvider = ( {children} ) => {
     };
 
     return (
-        <Context.Provider value={contextValue}>
+        <ModalContext.Provider value={contextValue}>
             {children}
-        </Context.Provider>
+        </ModalContext.Provider>
     )
 }
 
-export default Context;
+export default ModalContext;

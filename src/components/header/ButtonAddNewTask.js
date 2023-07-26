@@ -1,10 +1,10 @@
 import logoAddTask from "../../assets/icon-add-task-mobile.svg";
 import { useContext } from "react";
-import Context from "../../context/Context";
+import ModalContext from "../../context/ModalContext";
 import BoardContext from "../../context/BoardContext";
 
 const ButtonAddNewTask = () => {
-  const { isMobile, openModalOnClick, setNewTaskModal } = useContext(Context)
+  const { isMobile, openModalOnClick, setNewTaskModal } = useContext(ModalContext)
   const { setSubtasks } = useContext(BoardContext)
 
   const handleClick = () => {

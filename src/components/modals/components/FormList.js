@@ -2,9 +2,8 @@ import BoardContext from "../../../context/BoardContext";
 import FormComponent from "./FormComponent";
 import { useContext, useEffect, useState } from "react"
 import ModalLabel from "./ModalLabel";
-import FormContext from "../../../context/FormContext";
 
-const FormList = ( {title, inputs, setInputs} ) => {
+const FormList = ( {title, inputs, setInputs, type} ) => {
   const { deleteInputOnClick, handleChangeListInputs } = useContext(BoardContext)
   const [typeOfInput, setTypeOfInput] = useState("")
 

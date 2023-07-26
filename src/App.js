@@ -1,5 +1,5 @@
 import { DarkModeProvider } from "./context/DarkModeContext";
-import { ContextProvider } from "./context/Context";
+import { ModalContextProvider } from "./context/ModalContext";
 import { BoardProvider } from "./context/BoardContext";
 import { FormProvider } from "./context/FormContext";
 import MainSection from "./MainSection";
@@ -8,14 +8,14 @@ import Header from "./components/header/Header";
 function App() {
   return (
     <BoardProvider>
-      <ContextProvider>
+      <ModalContextProvider>
         <DarkModeProvider>
           <FormProvider>
             <Header />
             <MainSection />
           </FormProvider>
         </DarkModeProvider>
-      </ContextProvider>
+      </ModalContextProvider>
     </BoardProvider>
   );
 }

@@ -5,17 +5,23 @@ import ModalHeading from "./components/ModalHeading"
 import logoEditDelete from "../../assets/icon-vertical-ellipsis.svg"
 import SubtasksContainer from "./components/SubtasksContainer"
 import CurrentStatus from "./components/CurrentStatus"
-import Context from "../../context/Context"
+import ModalContext from "../../context/ModalContext"
 import ChangeTaskModal from "./change/ChangeTaskModal"
+import ButtonPurple from "../../ui/ButtonPurple"
 
 const TaskModal = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { task } = useContext(BoardContext)
-  const { openChangeTaskModal, setChangeTaskModal } = useContext(Context)
+  const { task, updateTaskStatus } = useContext(BoardContext)
+  const { openChangeTaskModal, setChangeTaskModal, closeModalOnClick, setOpenTaskModal } = useContext(ModalContext)
   const { title, description, subtasks, status } = task;
 
   const handleClick = () => {
     setChangeTaskModal(prevState => !prevState)
+  };
+
+  const saveChangesOnClick = () => {
+    closeModalOnClick(setOpenTaskModal)
+    updateTaskStatus()
   };
 
   return (
@@ -28,8 +34,17 @@ const TaskModal = () => {
         {openChangeTaskModal && <ChangeTaskModal />}
       </div>
       <p className="text-[13px] font-medium leading-6 text-mediumGray">{description}</p>
-      <SubtasksContainer subtasks={subtasks}/>
-      <CurrentStatus input={status} text={"Current Status"}/>
+      <SubtasksContainer 
+        subtasks={subtasks}
+      />
+      <CurrentStatus 
+        input={status} 
+        text={"Current Status"}
+      />
+      <ButtonPurple 
+        text={"Save Changes"}
+        onClick={saveChangesOnClick}
+      />
     </div>
   )
 }

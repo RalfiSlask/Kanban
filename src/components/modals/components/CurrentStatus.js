@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import logoChevronUp from "../../../assets/icon-chevron-up.svg";
 import logoChevronDown from "../../../assets/icon-chevron-down.svg";
 import CurrenStatusSelector from "./CurrenStatusSelector";
 import ModalLabel from "./ModalLabel";
+import BoardContext from "../../../context/BoardContext";
 
 const CurrentStatus = ( {input, text, margin} ) => {
-    const [status, setStatus] = useState(input)
+    const { status, setStatus } = useContext(BoardContext)
     const [isClicked, setIsClicked] = useState(false)
+
+    useEffect(() => {
+      setStatus(input)
+    }, [])
 
     const handleClick = () => {
         setIsClicked(prevState => !prevState)

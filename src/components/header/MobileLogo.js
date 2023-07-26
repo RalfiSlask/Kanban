@@ -1,11 +1,11 @@
 import logoMobile from "../../assets/logo-mobile.svg";
 import { useContext } from "react";
-import Context from "../../context/Context";
+import ModalContext from "../../context/ModalContext";
 import DarkModeContext from "../../context/DarkModeContext";
 
 
 const MobileLogo = ( {margins} ) => {
-    const { isMobile } = useContext(Context);
+    const { isMobile } = useContext(ModalContext);
     const { isDarkMode } = useContext(DarkModeContext);
 
   return (
