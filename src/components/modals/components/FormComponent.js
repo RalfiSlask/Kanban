@@ -1,5 +1,5 @@
 import { ReactComponent as LogoCross } from "../../../assets/icon-cross.svg";
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import FormContext from "../../../context/FormContext";
 import Input from "./Input";
 import BoardContext from "../../../context/BoardContext";

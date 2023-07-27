@@ -6,12 +6,17 @@ import ModalLabel from "./ModalLabel";
 import BoardContext from "../../../context/BoardContext";
 
 const CurrentStatus = ( {input, text, margin} ) => {
-    const { status, setStatus } = useContext(BoardContext)
+    const { statusInput, setStatusInput } = useContext(BoardContext)
     const [isClicked, setIsClicked] = useState(false)
 
     useEffect(() => {
-      setStatus(input)
+      console.log(input)
     }, [])
+
+    useEffect(() => {
+      console.log(statusInput)
+      
+    })
 
     const handleClick = () => {
         setIsClicked(prevState => !prevState)
@@ -21,10 +26,10 @@ const CurrentStatus = ( {input, text, margin} ) => {
     <div className={`${margin} flex flex-col gap-[8px] relative`} onClick={handleClick}>
         <ModalLabel text={text}/>
         <div className={`${isClicked ? "border-[#635FC7]" : "border-inputBorder"} cursor-pointer flex justify-between items-center px-4 rounded border border-solid w-[100%] h-10 border-[rgba(130, 143, 163, 0.25)]`}>
-            <p>{status}</p>
+            <p>{statusInput}</p>
             <img src={isClicked? logoChevronUp : logoChevronDown} alt="chevron" />
         </div>
-        {isClicked && <CurrenStatusSelector setStatus={setStatus}/>}
+        {isClicked && <CurrenStatusSelector setStatus={setStatusInput}/>}
     </div>
   )
 }

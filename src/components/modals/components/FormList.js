@@ -3,7 +3,7 @@ import FormComponent from "./FormComponent";
 import { useContext, useEffect, useState } from "react"
 import ModalLabel from "./ModalLabel";
 
-const FormList = ( {title, inputs, setInputs, type} ) => {
+const FormList = ( {title, inputs, setInputs} ) => {
   const { deleteInputOnClick, handleChangeListInputs } = useContext(BoardContext)
   const [typeOfInput, setTypeOfInput] = useState("")
 
@@ -14,7 +14,7 @@ const FormList = ( {title, inputs, setInputs, type} ) => {
       setTypeOfInput("column")
     }
   }, [title])
-  
+
   return (
         <form className="flex flex-col mt-6">
           <ModalLabel text={title}/>
@@ -23,7 +23,7 @@ const FormList = ( {title, inputs, setInputs, type} ) => {
                 <FormComponent 
                   key={index} 
                   id={index} 
-                  name={input.name ? input.name : input.title} 
+                  name={input.name !== undefined ? input.name : input.title}
                   type={typeOfInput}
                   onChange={(event) => {handleChangeListInputs(index, typeOfInput, event)}} 
                   onClick={() => {deleteInputOnClick(index, inputs, setInputs)}}

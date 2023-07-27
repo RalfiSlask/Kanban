@@ -5,11 +5,11 @@ import BoardContext from "../../context/BoardContext";
 
 const ButtonAddNewTask = () => {
   const { isMobile, openModalOnClick, setNewTaskModal } = useContext(ModalContext)
-  const { setSubtasks } = useContext(BoardContext)
+  const { setSubtaskInputs } = useContext(BoardContext)
 
   const handleClick = () => {
     openModalOnClick(setNewTaskModal)
-    setSubtasks([{title: "", isCompleted: false}, {title: "", isCompleted: false}])
+    setSubtaskInputs([{title: "", isCompleted: false}, {title: "", isCompleted: false}])
   };
 
   return (

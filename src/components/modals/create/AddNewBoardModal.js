@@ -11,7 +11,7 @@ import FormContext from "../../../context/FormContext"
 
 const AddNewBoardModal = () => {
     const { isDarkMode } = useContext(DarkModeContext)
-    const { columnInputs, setColumnInputs, newColumns, clickOnNewColumn, checkBoardValidity, AddNewBoard, isValid, setIsValid } = useContext(BoardContext)
+    const { columnInputs, setColumnInputs, newColumns, clickOnNewColumn, checkBoardValidity, AddNewBoard, isValid } = useContext(BoardContext)
     const { closeModalOnClick, setOpenNewBoardModal } = useContext(ModalContext)
     const { setButtonPressed } = useContext(FormContext)
 
@@ -28,7 +28,7 @@ const AddNewBoardModal = () => {
       if(isValid) {
         AddNewBoard()
         closeModalOnClick(setOpenNewBoardModal)
-        setIsValid(false)
+        setButtonPressed(false)
       }
     }, [isValid])
 

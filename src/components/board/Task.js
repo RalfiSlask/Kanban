@@ -1,17 +1,18 @@
 import BoardContext from "../../context/BoardContext"
 import ModalContext from "../../context/ModalContext"
 import DarkModeContext from "../../context/DarkModeContext"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 
 const Task = ( {task} ) => {
     const { isDarkMode } = useContext(DarkModeContext)
     const { openModalOnClick, setOpenTaskModal } = useContext(ModalContext)
-    const { setTask } = useContext(BoardContext)
-    const { subtasks, title } = task;
+    const { setTask, setStatusInput } = useContext(BoardContext)
+    const { subtasks, title, status } = task;
 
     const handleClick = () => {
       openModalOnClick(setOpenTaskModal)
       setTask(task)
+      setStatusInput(status)
     };
 
   return (

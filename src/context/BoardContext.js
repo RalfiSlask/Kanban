@@ -4,7 +4,8 @@ import data from "../data/data.json"
 const BoardContext = createContext({})
 
 export const BoardProvider = ( {children} ) => {
-    const [boardList, setboardList] = useState(data.boards)
+
+    const [boardList, setboardList] = useState([])
     const [selectedBoard, setselectedBoard] = useState("Platform Launch")
     const [boardNumber, setBoardNumber] = useState(0)
     const [columns, setColumns] = useState([])
@@ -13,9 +14,10 @@ export const BoardProvider = ( {children} ) => {
     const [description, setDescription] = useState("")
     const [task, setTask] = useState("")
     const [subtasks, setSubtasks] = useState([]);
-    const [status, setStatus] = useState("")
+    const [statusInput, setStatusInput] = useState("")
     const [isValid, setIsValid] = useState(false);
-    const [columnInputs, setColumnInputs] = useState([])
+    const [columnInputs, setColumnInputs] = useState([]);
+    const [subtaskInputs, setSubtaskInputs] = useState([]);
     const randomPlaceholders = ["Make coffee", "Drink coffee and smile", "clean house", "Build a school out of Lego", "Read a newspaper", "Take up yoga", "Make a origami bird", "Go for a run" , "Sketch your pet", "Bake homemade pizza", "Go for picnic in a park"]
 
     const pickRandomPlaceholder = () => {
@@ -38,19 +40,25 @@ export const BoardProvider = ( {children} ) => {
     };
 
     const updateSubtasks = (id) => {
-      const updatedSubtasks = [...subtasks]
+      const updatedSubtasks = [...subtaskInputs]
       updatedSubtasks[id].isCompleted = !updatedSubtasks[id].isCompleted
-      setSubtasks(updatedSubtasks)
+      setSubtaskInputs(updatedSubtasks)
       const updatedList = [...boardList]
       localStorage.setItem("boards", JSON.stringify(updatedList))
     };
 
+    useEffect(() => {
+      console.log(task)
+      console.log(statusInput)
+    })
+
     const addNewTask = () => {
-      const updatedTask = {}
-      updatedTask.title = taskName;
-      updatedTask.description = description;
-      updatedTask.subtasks = subtasks;
-      updatedTask.status = status;
+      const updatedTask = {
+        title: taskName,
+        description: description,
+        subtasks: subtaskInputs,
+        status: statusInput,
+      }
       const updatedColumns = [...columns]
       updatedColumns.forEach(column => {
         if(column.name === updatedTask.status) {
@@ -58,17 +66,55 @@ export const BoardProvider = ( {children} ) => {
         }
       });
       const updatedBoardList = [...boardList]
+      setIsValid(false)
       localStorage.setItem("boards", JSON.stringify(updatedBoardList))
      };
 
-     useEffect(() => {
-      console.log(columns)
-      console.log("columnInputs:", columnInputs)
-      console.log(boardName)
-     })
+     const changeTask = () => {
+      const updatedBoardList = [...boardList]
+      const index = updatedBoardList.findIndex(board => board.name === selectedBoard)
+      const updatedColumns = updatedBoardList[index].columns
+      const currentTask = {...task}
+      updatedColumns.forEach(column => {
+        column.tasks.forEach(currTask => {
+          if(currTask.title === currentTask.title) {
+            console.log("hej")
+
+          }
+          if(currTask.status = statusInput) {
+            console.log("nej")
+          }
+        })
+      })
+      setColumns(updatedColumns)
+      setboardList(updatedBoardList)
+      setIsValid(false)
+      localStorage.setItem("boards", JSON.stringify(updatedBoardList))
+     };
+
+    const AddNewBoard = () => {
+      const updatedBoardList = [...boardList, {name: boardName, columns: columnInputs}]
+      setboardList(updatedBoardList)
+      setIsValid(false)
+      localStorage.setItem("boards", JSON.stringify(updatedBoardList))
+    };
+
+    const changeBoard = () => {
+      const updatedBoardList = [...boardList]
+      updatedBoardList.forEach(board => {
+        if(board.name === selectedBoard) {
+          board.name = boardName;
+          board.columns = columnInputs;
+        }
+      })
+      setboardList(updatedBoardList)
+      setIsValid(false)
+      setselectedBoard(boardName)
+      localStorage.setItem("boards", JSON.stringify(updatedBoardList))
+    };
     
     const checkValidity = () => {
-      const subtasksNotEmpty = subtasks.every(subtask => subtask.title !== "")
+      const subtasksNotEmpty = subtaskInputs.every(subtask => subtask.title !== "")
       if(subtasksNotEmpty && taskName !== "") {
         setIsValid(true)
       } else {
@@ -79,7 +125,6 @@ export const BoardProvider = ( {children} ) => {
     const checkBoardValidity = () => {
       const columnsNotEmpty = columnInputs.every(column => column.name !== "")
       if(columnsNotEmpty && boardName !== "") {
-        console.log("hej")
         setIsValid(true)
       } else {
         setIsValid(false)
@@ -97,23 +142,6 @@ export const BoardProvider = ( {children} ) => {
       }
       localStorage.setItem("boards", JSON.stringify(updatedList))
      };
-   
-    const AddNewBoard = () => {
-      const updatedList = [...boardList, {name: boardName, columns: columnInputs}]
-      setboardList(updatedList)
-      localStorage.setItem("boards", JSON.stringify(updatedList))
-    };
-
-    const changeBoard = () => {
-      const updatedBoardList = [...boardList]
-      updatedBoardList.forEach(board => {
-        if(board.name === selectedBoard) {
-          board.name = boardName;
-          board.columns = columnInputs;
-        }
-      })
-      setboardList(updatedBoardList)
-    };
 
     const handleChangeTitle = (title, event) => {
       if(title === "Board Name") {
@@ -125,9 +153,9 @@ export const BoardProvider = ( {children} ) => {
 
     const handleChangeListInputs = (index, type, event) => {
       if(type === "subtask") {
-        const updatedSubtasks = [...subtasks]
+        const updatedSubtasks = [...subtaskInputs]
         updatedSubtasks[index] =  {...updatedSubtasks[index], title: event.target.value, isCompleted:false}
-        setSubtasks(updatedSubtasks)
+        setSubtaskInputs(updatedSubtasks)
       } else if(type === "column") {
         const updatedColumns = [...columnInputs]
         updatedColumns[index] =  {...updatedColumns[index], name: event.target.value}
@@ -144,7 +172,7 @@ export const BoardProvider = ( {children} ) => {
     };
 
     const addNewSubtask = () => {
-      setSubtasks(prev => [...prev, {title: "", isCompleted: false}])
+      setSubtaskInputs(prev => [...prev, {title: "", isCompleted: false}])
     };
 
     const deleteInputOnClick = (id, inputs, setInputs) => {
@@ -163,13 +191,16 @@ export const BoardProvider = ( {children} ) => {
 
     useEffect(() => {
       const currentTask = {...task} 
-      setSubtasks(currentTask.subtasks)
+      setSubtaskInputs(currentTask.subtasks)
     }, [task]);
 
     useEffect(() => {
       const storedBoards = JSON.parse(localStorage.getItem("boards"));
       if(storedBoards) {
         setboardList(storedBoards)
+        setselectedBoard(storedBoards[0].name)
+      } else {
+        setboardList(data.boards)
       }
     }, []);
     
@@ -180,7 +211,7 @@ export const BoardProvider = ( {children} ) => {
           }
       })
         
-     }, [selectedBoard, boardList]);
+     }, [selectedBoard, boardList, columns]);
    
      useEffect(() => {
          setBoardNumber(Array.from(boardList).length)
@@ -196,12 +227,13 @@ export const BoardProvider = ( {children} ) => {
         task: task,
         subtasks: subtasks,
         randomPlaceholders: randomPlaceholders,
-        status: status,
+        status: statusInput,
         isValid: isValid,
         columnInputs: columnInputs,
+        subtaskInputs: subtaskInputs,
         // setters
-        setStatus: setStatus,
-        setSubtasks: setSubtasks,
+        setStatusInput: setStatusInput,
+        setSubtaskInputs: setSubtaskInputs,
         setTask: setTask,
         setColumns: setColumns,
         setIsValid: setIsValid,
@@ -225,6 +257,7 @@ export const BoardProvider = ( {children} ) => {
         updateTaskStatus: updateTaskStatus,
         checkBoardValidity: checkBoardValidity,
         changeBoard: changeBoard,
+        changeTask: changeTask,
     }
 
     return (

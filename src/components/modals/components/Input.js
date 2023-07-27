@@ -18,7 +18,6 @@ const Input = ( { placeholder, value, setIsLogoRed, onChange} ) => {
         input === "" ? setError(true) : setError(false)
     }, [input, buttonPressed])
 
-
     useEffect(() => {
         if(setIsLogoRed) {
             input === "" ? setIsLogoRed(true) : setIsLogoRed(false)

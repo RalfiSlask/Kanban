@@ -13,10 +13,10 @@ import { useContext, useEffect } from "react"
 
 const EditTaskModal = () => {
   const { isDarkMode } = useContext(DarkModeContext);
-  const { task, subtasks, setSubtasks, checkValidity, addNewSubtask, isValid, setIsValid } = useContext(BoardContext);
+  const { task, statusInput, subtaskInputs, changeTask, setSubtaskInputs, checkValidity, addNewSubtask, isValid, setIsValid } = useContext(BoardContext);
   const { closeModalOnClick, setEditTaskModal } = useContext(ModalContext);
   const { setButtonPressed } = useContext(FormContext);
-  const { title, description, status } = task;
+  const { title, description } = task;
 
   const handleClick = () => {
     setButtonPressed(true)
@@ -24,14 +24,12 @@ const EditTaskModal = () => {
   };
 
   useEffect(() => {
-    console.log(task)
-    console.log(subtasks)
     if(isValid) {
-      console.log("klar")
+      changeTask()
       closeModalOnClick(setEditTaskModal)
-      setIsValid(false)
-    } else {
-      console.log("falsk")
+      setButtonPressed(false)
+      const currentTask = {...task}
+      currentTask.status = statusInput;
     }
   }, [isValid])
 
@@ -52,15 +50,15 @@ const EditTaskModal = () => {
         />
         <FormList 
           title={"Subtasks"} 
-          inputs={subtasks} 
-          setInputs={setSubtasks}
+          inputs={subtaskInputs} 
+          setInputs={setSubtaskInputs}
         />
         <ButtonLightPurple 
           text={"Add New Subtask"} 
           onClick={addNewSubtask} 
         />
         <CurrentStatus 
-          input={status} 
+          input={statusInput} 
           text={"Status"} 
           margin={"mt-[24px]"}
         />

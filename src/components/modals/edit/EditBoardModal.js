@@ -11,7 +11,7 @@ import ModalContext from "../../../context/ModalContext"
 
 const EditBoardModal = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { columns, setColumns, changeBoard, setColumnInputs, clickOnNewColumn, selectedBoard, checkBoardValidity, setIsValid, isValid } = useContext(BoardContext)
+  const { columns, columnInputs, changeBoard, setColumnInputs, clickOnNewColumn, selectedBoard, checkBoardValidity, setIsValid, isValid } = useContext(BoardContext)
   const { setButtonPressed } = useContext(FormContext)
   const { closeModalOnClick, setEditBoardModal } = useContext(ModalContext)
 
@@ -28,7 +28,7 @@ const EditBoardModal = () => {
     if(isValid) {
       changeBoard()
       closeModalOnClick(setEditBoardModal)
-      setIsValid(false)
+      setButtonPressed(false)
     } 
   }, [isValid])
 
@@ -44,8 +44,8 @@ const EditBoardModal = () => {
     />
     <FormList 
       title={"Board Columns"} 
-      inputs={columns} 
-      setInputs={setColumns}
+      inputs={columnInputs} 
+      setInputs={setColumnInputs}
     />
     <ButtonLightPurple 
       text={"Add New Column"} 
