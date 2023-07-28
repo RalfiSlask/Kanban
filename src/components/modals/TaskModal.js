@@ -11,9 +11,9 @@ import ButtonPurple from "../../ui/ButtonPurple"
 
 const TaskModal = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { task, updateTaskStatus, statusInput } = useContext(BoardContext)
+  const { task, updateTaskStatus, setStatusInput} = useContext(BoardContext)
   const { openChangeTaskModal, setChangeTaskModal, closeModalOnClick, setOpenTaskModal } = useContext(ModalContext)
-  const { title, description, subtasks } = task;
+  const { title, description, subtasks, status } = task;
 
   const handleClick = () => {
     setChangeTaskModal(prevState => !prevState)
@@ -38,7 +38,7 @@ const TaskModal = () => {
         subtasks={subtasks}
       />
       <CurrentStatus 
-        input={statusInput} 
+        input={status} 
         text={"Current Status"}
       />
       <ButtonPurple 

@@ -9,6 +9,7 @@ export const BoardProvider = ( {children} ) => {
     const [selectedBoard, setselectedBoard] = useState("Platform Launch")
     const [boardNumber, setBoardNumber] = useState(0)
     const [columns, setColumns] = useState([])
+    const [currentColumnIndex, setCurrentColumnIndex] = useState(null)
     const [boardName, setBoardName] = useState("")
     const [taskName, setTaskName] = useState("")
     const [description, setDescription] = useState("")
@@ -27,17 +28,32 @@ export const BoardProvider = ( {children} ) => {
     };
 
     const updateTaskStatus = () => {
-  /*     const currentTask = {...task}
-      currentTask.status = status;
-      setTask(currentTask)
-      const currentColumns = [...columns]
-      const currentColumn = currentColumns.filter(column => column.name === status)
-      const currentTasks = currentColumn[0].tasks;
-      console.log(currentColumns, currentColumn, currentTasks)
-
-      const updatedList = [...boardList]
-      localStorage.setItem("boards", JSON.stringify(updatedList)) */
+      const updatedBoardList = [...boardList];
+      const currentColumns = updatedBoardList.find(board => board.name === selectedBoard).columns
+      const columnIndex = currentColumnIndex;
+      const currentColumn = currentColumns[columnIndex]
+      const currentTask = currentColumn.tasks.find(currTask => currTask.title === task.title)
+      currentTask.status = statusInput; 
+      currentColumns.forEach(column => {
+      if(column.name === statusInput) {
+            const taskExistInColumn = column.tasks.some(task => task.title === currentTask.title)
+            if(taskExistInColumn) {
+              return
+            } else {
+              currentColumn.tasks = currentColumn.tasks.filter(task => task.title !== currentTask.title);
+              column.tasks.push(currentTask)
+            } 
+        }
+      })  
+      console.log(updatedBoardList)
+      setboardList(updatedBoardList)
+      localStorage.setItem("boards", JSON.stringify(updatedBoardList))
     };
+
+    useEffect(() => {
+      console.log(boardList)
+    })
+
 
     const updateSubtasks = (id) => {
       const updatedSubtasks = [...subtaskInputs]
@@ -46,11 +62,6 @@ export const BoardProvider = ( {children} ) => {
       const updatedList = [...boardList]
       localStorage.setItem("boards", JSON.stringify(updatedList))
     };
-
-    useEffect(() => {
-      console.log(task)
-      console.log(statusInput)
-    })
 
     const addNewTask = () => {
       const updatedTask = {
@@ -227,7 +238,7 @@ export const BoardProvider = ( {children} ) => {
         task: task,
         subtasks: subtasks,
         randomPlaceholders: randomPlaceholders,
-        status: statusInput,
+        statusInput: statusInput,
         isValid: isValid,
         columnInputs: columnInputs,
         subtaskInputs: subtaskInputs,
@@ -240,6 +251,7 @@ export const BoardProvider = ( {children} ) => {
         setTaskName: setTaskName,
         setBoardName: setBoardName,
         setColumnInputs: setColumnInputs,
+        setCurrentColumnIndex: setCurrentColumnIndex,
         // functions
         handleClickOnBoard: handleClickOnBoard,
         clickOnNewColumn: clickOnNewColumn,

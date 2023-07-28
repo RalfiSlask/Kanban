@@ -13,7 +13,7 @@ import ModalContext from "../../../context/ModalContext"
 
 const AddNewTaskModal = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { columns, subtaskInputs, setSubtaskInputs, addNewSubtask, checkValidity, addNewTask, isValid, setIsValid } = useContext(BoardContext)
+  const { columns, subtaskInputs, setSubtaskInputs, addNewSubtask, checkValidity, addNewTask, isValid} = useContext(BoardContext)
   const { setButtonPressed } = useContext(FormContext);
   const { closeModalOnClick, setNewTaskModal } = useContext(ModalContext)
 

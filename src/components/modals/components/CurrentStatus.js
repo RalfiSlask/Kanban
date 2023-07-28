@@ -10,13 +10,8 @@ const CurrentStatus = ( {input, text, margin} ) => {
     const [isClicked, setIsClicked] = useState(false)
 
     useEffect(() => {
-      console.log(input)
+      setStatusInput(input)
     }, [])
-
-    useEffect(() => {
-      console.log(statusInput)
-      
-    })
 
     const handleClick = () => {
         setIsClicked(prevState => !prevState)

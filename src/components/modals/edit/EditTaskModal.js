@@ -13,10 +13,10 @@ import { useContext, useEffect } from "react"
 
 const EditTaskModal = () => {
   const { isDarkMode } = useContext(DarkModeContext);
-  const { task, statusInput, subtaskInputs, changeTask, setSubtaskInputs, checkValidity, addNewSubtask, isValid, setIsValid } = useContext(BoardContext);
+  const { task, subtaskInputs, changeTask, setSubtaskInputs, checkValidity, addNewSubtask, isValid} = useContext(BoardContext);
   const { closeModalOnClick, setEditTaskModal } = useContext(ModalContext);
   const { setButtonPressed } = useContext(FormContext);
-  const { title, description } = task;
+  const { title, description, status } = task;
 
   const handleClick = () => {
     setButtonPressed(true)
@@ -28,8 +28,8 @@ const EditTaskModal = () => {
       changeTask()
       closeModalOnClick(setEditTaskModal)
       setButtonPressed(false)
-      const currentTask = {...task}
-      currentTask.status = statusInput;
+     /*  const currentTask = {...task}
+      currentTask.status = statusInput; */
     }
   }, [isValid])
 
@@ -58,7 +58,7 @@ const EditTaskModal = () => {
           onClick={addNewSubtask} 
         />
         <CurrentStatus 
-          input={statusInput} 
+          input={status} 
           text={"Status"} 
           margin={"mt-[24px]"}
         />
