@@ -222,6 +222,8 @@ export const BoardProvider = ( {children} ) => {
       })
         
      }, [selectedBoard, boardList, columns]);
+
+    localStorage.clear(); 
    
      useEffect(() => {
          setBoardNumber(Array.from(boardList).length)

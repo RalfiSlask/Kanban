@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext, useEffect} from "react";
 import BoardContext from "../../context/BoardContext";
 import Column from "./Column";
 import ModalContext from "../../context/ModalContext";

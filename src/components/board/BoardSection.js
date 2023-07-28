@@ -9,7 +9,7 @@ const BoardSection = () => {
     const { sidebarOpen, isMobile } = useContext(ModalContext)
 
   return (
-    <div className={`${sidebarOpen ? "md:left-72 xl:left-80" : "left-16"} ${isMobile ? "static mt-6" : "absolute"} flex justify-center md:top-28 xl:top-32 w-[100%] `}>
+    <div className={`${sidebarOpen ? "md:left-72 xl:left-80" : "left-16"} ${isMobile ? "static mt-6" : "absolute"} min-h-[600px] flex justify-center md:top-28 xl:top-32 w-[100%] `}>
         {columns < 1 ? <EmptyBoard /> : <Board />}
     </div>
   )

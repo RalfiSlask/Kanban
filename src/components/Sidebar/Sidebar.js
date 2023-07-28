@@ -13,7 +13,7 @@ const Sidebar = () => {
   return (
     <div className={`
     ${isDarkMode ? "bg-darkGrey border-linesDark" : "bg-white border-linesLight"}
-    transition-transform duration-1000 ease-in-out transform md:w-[260px] xl:w-[300px] min-h-[100vh] flex flex-col z-10 absolute top-0 left-0 pb-12 border-r pl-3 xl:pl-6
+    transition-transform duration-1000 ease-in-out transform md:w-[260px] xl:w-[300px] min-h-[1100px] rounded-b-md border-b flex flex-col z-10 absolute top-0 left-0 pb-12 border-r pl-3 xl:pl-6
     ${sidebarOpen ? "translate-x-0" : "translate-x-full"}
   `}>
         <MobileLogo margins={"mb-14"}/>
