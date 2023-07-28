@@ -28,8 +28,6 @@ const EditTaskModal = () => {
       changeTask()
       closeModalOnClick(setEditTaskModal)
       setButtonPressed(false)
-     /*  const currentTask = {...task}
-      currentTask.status = statusInput; */
     }
   }, [isValid])
 

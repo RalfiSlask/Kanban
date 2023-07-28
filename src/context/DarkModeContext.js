@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 const DarkModeContext = createContext({});
 
@@ -6,16 +6,13 @@ export const DarkModeProvider = ( {children} ) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [value, setValue] = useState(1);
 
-    const toggleDarkMode = () => {
-        setIsDarkMode(prevMode => !prevMode)
-    };
-    
-    const handleChangeOnInput = (event) => {
-      setValue(event.target.value)
-    };
-
-    const handleClick = () => {
-      toggleDarkMode()
+    const handleClick = (event) => {
+        setValue(event.target.value)
+        if(event.target.value == 1) {
+            setIsDarkMode(false)
+        } else if(event.target.value == 2) {
+            setIsDarkMode(true)
+        }
     };
 
     const contextValue = {
@@ -23,8 +20,7 @@ export const DarkModeProvider = ( {children} ) => {
         isDarkMode: isDarkMode,
         setIsDarkMode: setIsDarkMode,
         handleClick: handleClick,
-        handleChangeOnInput: handleChangeOnInput,
-    }
+    };
 
     return (
         <DarkModeContext.Provider value={contextValue}>
