@@ -7,11 +7,12 @@ import { useContext } from "react";
 
 const DeleteBoardModal = () => {
     const { isDarkMode } = useContext(DarkModeContext)
-    const { task } = useContext(BoardContext)
+    const { task, deleteTask } = useContext(BoardContext)
     const { closeModalOnClick, setDeleteTaskModal } = useContext(ModalContext)
 
     const handleClickOnDelete = () => {
       closeModalOnClick(setDeleteTaskModal);
+      deleteTask();
     };
 
   return (

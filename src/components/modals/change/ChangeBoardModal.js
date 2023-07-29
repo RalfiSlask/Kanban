@@ -4,13 +4,12 @@ import { useContext } from "react";
 
 const ChangeBoardModal = () => {
     const { isDarkMode } = useContext(DarkModeContext)
-    const { isMobile, openModalOnClick, setDeleteBoardModal, setEditBoardModal } = useContext(ModalContext);
+    const { handleClickOnEditBoardText, handleClickOnDeleteBoardText } = useContext(ModalContext);
 
   return (
-    <div className={`${isDarkMode ? "bg-darkGrey text-white border-linesDark" : "bg-white text-black border-linesLight"} flex justify-between border right-[20px] md:top-[-4px] xl:top-[-6px] absolute h-14 w-32 md:w-48 rounded-[8px] p-4`}>
-        {!isMobile && <p className="font-bold text-purpleColor">Board:</p>}
-        <p onClick={() => {openModalOnClick(setEditBoardModal)}} className="cursor-pointer">Edit</p>
-        <p onClick={() => {openModalOnClick(setDeleteBoardModal)}} className="cursor-pointer">Delete</p>
+    <div className={`${isDarkMode ? "bg-darkGrey shadow-darkShadow" : "bg-white shadow-lightShadowLarge"} flex flex-col text-[13px] top-[-8px] font-medium justify-between border right-[20px] md:top-[-4px] xl:top-[-6px] absolute h-[94px] w-32 md:w-[192px] rounded-[8px] p-4`}>
+        <p onClick={handleClickOnEditBoardText} className="text-mediumGray cursor-pointer">Edit Board</p>
+        <p onClick={handleClickOnDeleteBoardText} className="text-[#EA5555] cursor-pointer">Delete Board</p>
     </div>
   )
 }

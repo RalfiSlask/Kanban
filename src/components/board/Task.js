@@ -1,7 +1,7 @@
 import BoardContext from "../../context/BoardContext"
 import ModalContext from "../../context/ModalContext"
 import DarkModeContext from "../../context/DarkModeContext"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 
 const Task = ( {task, id, columnId} ) => {
     const { isDarkMode } = useContext(DarkModeContext)

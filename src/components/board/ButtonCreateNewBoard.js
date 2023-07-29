@@ -1,6 +1,6 @@
-import { ReactComponent as LogoPlatform} from "../assets/icon-board.svg";
-import DarkModeContext from "../context/DarkModeContext";
-import ModalContext from "../context/ModalContext";
+import { ReactComponent as LogoPlatform} from "../../assets/icon-board.svg";
+import DarkModeContext from "../../context/DarkModeContext";
+import ModalContext from "../../context/ModalContext";
 import { useContext } from "react";
 
 const ButtonCreateNewBoard = () => {

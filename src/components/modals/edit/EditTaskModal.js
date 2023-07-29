@@ -61,7 +61,7 @@ const EditTaskModal = () => {
           margin={"mt-[24px]"}
         />
         <ButtonPurple 
-          text={"Create Task"} 
+          text={"Save Changes"} 
           onClick={handleClick}
         />
     </div>

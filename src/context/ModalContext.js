@@ -58,6 +58,16 @@ export const ModalContextProvider = ( {children} ) => {
         setOpenTaskModal(false)
         setChangeTaskModal(false)
     };
+
+    const handleClickOnEditBoardText = () => {
+        setOpenChangeBoardModal(false)
+        openModalOnClick(setEditBoardModal)
+    };
+
+    const handleClickOnDeleteBoardText = () => {
+        setOpenChangeBoardModal(false)
+        openModalOnClick(setDeleteBoardModal)
+    };
     
     useEffect(() => {
         const handleResize = () => {
@@ -110,6 +120,8 @@ export const ModalContextProvider = ( {children} ) => {
         closeModalOnClick: closeModalOnClick,
         handleClickOnDeleteTaskText: handleClickOnDeleteTaskText,
         handleClickOnEditTaskText: handleClickOnEditTaskText,
+        handleClickOnEditBoardText: handleClickOnEditBoardText,
+        handleClickOnDeleteBoardText: handleClickOnDeleteBoardText,
      
     };
 

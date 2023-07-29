@@ -100,8 +100,6 @@ export const BoardProvider = ( {children} ) => {
       localStorage.setItem("boards", JSON.stringify(updatedBoardList))
      };
 
-
-
     const AddNewBoard = () => {
       const updatedBoardList = [...boardList, {name: boardName, columns: columnInputs}]
       setboardList(updatedBoardList)
@@ -169,7 +167,19 @@ export const BoardProvider = ( {children} ) => {
       } else if(type === "column") {
         const updatedColumns = [...columnInputs]
         updatedColumns[index] =  {...updatedColumns[index], name: event.target.value}
+        updatedColumns[index].tasks = updatedColumns[index].tasks.map(task => ({...task, status: event.target.value}))
         setColumnInputs(updatedColumns)
+      }
+    };
+
+    const deleteTask = () => {
+      const updatedBoardList = [...boardList]
+      const selectedBoardObject = updatedBoardList.find(board => board.name === selectedBoard)
+      if(selectedBoardObject) {
+        const currentColumn = selectedBoardObject.columns[currentColumnIndex]
+        currentColumn.tasks = currentColumn.tasks.filter(currTask => currTask.title !== task.title)
+        setboardList(updatedBoardList)
+        localStorage.setItem("boards", JSON.stringify(updatedBoardList))
       }
     };
 
@@ -199,6 +209,8 @@ export const BoardProvider = ( {children} ) => {
         })
       };
 
+    localStorage.clear();
+
     useEffect(() => {
       const currentTask = {...task} 
       setSubtaskInputs(currentTask.subtasks)
@@ -222,8 +234,6 @@ export const BoardProvider = ( {children} ) => {
       })
         
      }, [selectedBoard, boardList, columns]);
-
-    localStorage.clear(); 
    
      useEffect(() => {
          setBoardNumber(Array.from(boardList).length)
@@ -270,6 +280,7 @@ export const BoardProvider = ( {children} ) => {
         checkBoardValidity: checkBoardValidity,
         changeBoard: changeBoard,
         changeTask: changeTask,
+        deleteTask: deleteTask,
     }
 
     return (

@@ -11,7 +11,7 @@ import ModalContext from "../../../context/ModalContext"
 
 const EditBoardModal = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { columns, columnInputs, changeBoard, setColumnInputs, clickOnNewColumn, selectedBoard, checkBoardValidity, setIsValid, isValid } = useContext(BoardContext)
+  const { columns, columnInputs, changeBoard, setColumnInputs, clickOnNewColumn, selectedBoard, checkBoardValidity, isValid } = useContext(BoardContext)
   const { setButtonPressed } = useContext(FormContext)
   const { closeModalOnClick, setEditBoardModal } = useContext(ModalContext)
 

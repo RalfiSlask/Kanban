@@ -19,7 +19,7 @@ const MainSection = () => {
       openTaskModal, openNewBoardModal, openDeleteBoardModal, openEditBoardModal } = useContext(ModalContext)
 
   return (
-    <main className={`${isDarkMode ? "bg-darkBG" : "bg-lightBG"} text-gray-500 flex justify-center h-[100%] w-[100%]`}>
+    <main className={`${isDarkMode ? "bg-darkBG" : "bg-lightBG"}  overflow-visible  text-gray-500 flex justify-center h-[100%] w-[100%]`}>
         {!isMobile && sidebarOpen && <Sidebar />}
         {!isMobile && !sidebarOpen && <ShowSidebar />}
         {lightboxActive && <Lightbox />}

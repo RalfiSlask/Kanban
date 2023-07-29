@@ -1,5 +1,5 @@
 import { ReactComponent as LogoCross } from "../../../assets/icon-cross.svg";
-import { useState, useContext, useEffect } from "react"
+import { useState, useContext} from "react"
 import FormContext from "../../../context/FormContext";
 import Input from "./Input";
 import BoardContext from "../../../context/BoardContext";
@@ -8,7 +8,7 @@ const FormComponent = ( {id, name, onClick, onChange } ) => {
     const { buttonPressed } = useContext(FormContext)
     const { pickRandomPlaceholder } = useContext(BoardContext)
     const [isLogoRed, setIsLogoRed] = useState(false)
-    const [placeholder, setPlaceholder] = useState(pickRandomPlaceholder)
+    const [placeholder] = useState(pickRandomPlaceholder)
   
   return (
     <div className="flex items-center justify-between gap-4 md:relative">

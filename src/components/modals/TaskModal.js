@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import DarkModeContext from "../../context/DarkModeContext"
 import BoardContext from "../../context/BoardContext"
 import ModalHeading from "./components/ModalHeading"
@@ -11,7 +11,7 @@ import ButtonPurple from "../../ui/ButtonPurple"
 
 const TaskModal = () => {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { task, updateTaskStatus, setStatusInput} = useContext(BoardContext)
+  const { task, updateTaskStatus} = useContext(BoardContext)
   const { openChangeTaskModal, setChangeTaskModal, closeModalOnClick, setOpenTaskModal } = useContext(ModalContext)
   const { title, description, subtasks, status } = task;
 
