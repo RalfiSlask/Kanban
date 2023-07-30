@@ -3,6 +3,9 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
     extend: {
+      transitionProperty: {
+        'paddingLeft': 'padding-left',
+      },
       colors: {
         purpleColor: "rgba(99, 95, 199, 1)",
         darkBG: "#20212C",
@@ -23,7 +26,8 @@ module.exports = {
       darkShadow: "0px 10px 20px 0px rgba(54, 78, 126, 0.25)",
       lightShadow: "0px 4px 6px 0px rgba(54, 78, 126, 0.10)",
       lightShadowLarge:  "0px 10px 20px 0px rgba(54, 78, 126, 0.10)",
-    }
+    },
+
   },
   plugins: [
     require("tailwindcss"), 

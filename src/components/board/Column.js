@@ -7,7 +7,7 @@ const Column = ( {columnId, title, tasks} ) => {
     const { isMobile } = useContext(ModalContext)
     
   return (
-    <div className={`${isMobile ? "w-[350px]" : "w-[280px]"} flex flex-col gap-6`}>
+    <div className={`${isMobile ? "w-[350px]" : "w-[280px]"}  md:mb-20  flex flex-col gap-6 flex-shrink-0`}>
         <div className="flex w-[105px] h-[15px] justify-between items-center">
             <ColumnBall id={columnId}/>
             <div className="text-xs font-bold tracking-tighter">

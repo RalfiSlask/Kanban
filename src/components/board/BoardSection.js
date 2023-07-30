@@ -5,12 +5,14 @@ import Board from "./Board";
 import ModalContext from "../../context/ModalContext";
 
 const BoardSection = () => {
-    const { columns } = useContext(BoardContext)
-    const { sidebarOpen, isMobile } = useContext(ModalContext)
+  const { columns } = useContext(BoardContext)
+  const { sidebarOpen, isMobile } = useContext(ModalContext)
 
   return (
-    <div className={`${sidebarOpen ? "md:pl-72 xl:pl-80" : "pl-16"} ${isMobile ? "static mt-6" : "absolute"} min-h-[600px] flex justify-center md:top-28 xl:top-32 w-[100%] `}>
-        {columns < 1 ? <EmptyBoard /> : <Board />}
+    <div className={`transition-paddingLeft duration-1000 ease-in-out ${
+        sidebarOpen ? "md:pl-72 xl:pl-80" : "pl-16"
+      } ${isMobile ? "static mt-6" : "absolute overflow-x-auto"}  min-h-[600px] flex justify-center md:top-28 xl:top-32 w-[100%]`}>
+      {columns < 1 ? <EmptyBoard /> : <Board />}
     </div>
   )
 }
