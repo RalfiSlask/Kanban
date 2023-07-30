@@ -15,7 +15,7 @@ import AddNewTaskModal from "./components/modals/create/AddNewTaskModal";
 
 const MainSection = () => {
     const { isDarkMode } = useContext(DarkModeContext);
-    const { lightboxActive, openNewTaskModal, openEditTaskModal, openDeleteTaskModal, isMobile, sidebarOpen, 
+    const { lightboxActive, openNewTaskModal, openEditTaskModal, openDeleteTaskModal, isMobile,  
       openTaskModal, openNewBoardModal, openDeleteBoardModal, openEditBoardModal } = useContext(ModalContext)
 
   return (

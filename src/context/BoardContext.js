@@ -5,27 +5,20 @@ const BoardContext = createContext({})
 
 export const BoardProvider = ( {children} ) => {
 
-    const [boardList, setboardList] = useState([])
-    const [selectedBoard, setselectedBoard] = useState("Platform Launch")
-    const [boardNumber, setBoardNumber] = useState(0)
-    const [columns, setColumns] = useState([])
-    const [currentColumnIndex, setCurrentColumnIndex] = useState(null)
-    const [boardName, setBoardName] = useState("")
-    const [taskName, setTaskName] = useState("")
-    const [description, setDescription] = useState("")
-    const [task, setTask] = useState("")
-    const [statusInput, setStatusInput] = useState("")
+    const [boardList, setboardList] = useState([]);
+    const [selectedBoard, setselectedBoard] = useState("Platform Launch");
+    const [boardNumber, setBoardNumber] = useState(0);
+    const [columns, setColumns] = useState([]);
+    const [currentColumnIndex, setCurrentColumnIndex] = useState(null);
+    const [boardName, setBoardName] = useState("");
+    const [taskName, setTaskName] = useState("");
+    const [description, setDescription] = useState("");
+    const [task, setTask] = useState("");
+    const [statusInput, setStatusInput] = useState("");
     const [isValid, setIsValid] = useState(false);
     const [columnInputs, setColumnInputs] = useState([]);
     const [subtaskInputs, setSubtaskInputs] = useState([]);
-    const randomPlaceholders = ["Make coffee", "Drink coffee and smile", "clean house", "Build a school out of Lego", "Read a newspaper", "Take up yoga", "Make a origami bird", "Go for a run" , "Sketch your pet", "Bake homemade pizza", "Go for picnic in a park"]
-
-    const pickRandomPlaceholder = () => {
-      const randomIndex = Math.floor(Math.random() * randomPlaceholders.length)
-      const randomPlaceholder = randomPlaceholders[randomIndex]
-      return randomPlaceholder;
-    };
-
+   
     const updateTaskStatus = () => {
       const updatedBoardList = [...boardList];
       const currentColumns = updatedBoardList.find(board => board.name === selectedBoard).columns
@@ -188,11 +181,15 @@ export const BoardProvider = ( {children} ) => {
     };
 
     const clickOnNewColumn = () => {
-      setColumnInputs(prev => [...prev, {name: "", tasks: []}])
+      if(columnInputs.length < 14) {
+        setColumnInputs(prev => [...prev, {name: "", tasks: []}])
+      } 
     };
 
     const addNewSubtask = () => {
-      setSubtaskInputs(prev => [...prev, {title: "", isCompleted: false}])
+      if(subtaskInputs.length < 14) {
+        setSubtaskInputs(prev => [...prev, {title: "", isCompleted: false}])
+      }
     };
 
     const deleteInputOnClick = (id, inputs, setInputs) => {
@@ -247,7 +244,6 @@ export const BoardProvider = ( {children} ) => {
         columns: columns,
         boardName: boardName,
         task: task,
-        randomPlaceholders: randomPlaceholders,
         statusInput: statusInput,
         isValid: isValid,
         columnInputs: columnInputs,
@@ -270,7 +266,6 @@ export const BoardProvider = ( {children} ) => {
         AddNewBoard: AddNewBoard,
         deleteInputOnClick: deleteInputOnClick,
         addNewSubtask: addNewSubtask,
-        pickRandomPlaceholder: pickRandomPlaceholder,
         handleChangeDescription: handleChangeDescription,
         handleChangeTitle: handleChangeTitle,
         handleChangeListInputs: handleChangeListInputs,

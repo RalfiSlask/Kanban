@@ -6,6 +6,7 @@ import ModalLabel from "./ModalLabel";
 const FormList = ( {title, inputs, setInputs} ) => {
   const { deleteInputOnClick, handleChangeListInputs } = useContext(BoardContext)
   const [typeOfInput, setTypeOfInput] = useState("")
+  const randomPlaceholders = ["Make coffee", "Drink coffee and smile", "clean house", "Build a school out of Lego", "Read a newspaper", "Take up yoga", "Make a origami bird", "Go for a run" , "Sketch your pet", "Bake homemade pizza", "Go for picnic in a park", "Play a new instrument", "Go to the movies", "play poker"]
 
   useEffect(() => {
     if(title === "Subtasks") {
@@ -25,6 +26,7 @@ const FormList = ( {title, inputs, setInputs} ) => {
                   id={index} 
                   name={input.name !== undefined ? input.name : input.title}
                   type={typeOfInput}
+                  placeholder={title === "Subtasks" ? randomPlaceholders[index] : ""}
                   onChange={(event) => {handleChangeListInputs(index, typeOfInput, event)}} 
                   onClick={() => {deleteInputOnClick(index, inputs, setInputs)}}
                   />

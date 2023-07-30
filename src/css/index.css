@@ -13,7 +13,6 @@ body {
     font-family: 'Plus Jakarta Sans'
 }   
 
-
 input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;

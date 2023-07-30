@@ -11,7 +11,7 @@ const Sidebar = () => {
   const { sidebarOpen } = useContext(ModalContext);
 
   return (
-    <div className={`transition-all duration-1000 ease-in-out transform ${
+    <div className={`transition-transform duration-1000 ease-in-out transform ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       } md:w-[260px] xl:w-[300px] md:min-h-[1040px] xl:min-h-[1060px] rounded-b-md border-b flex flex-col z-10 absolute top-0 left-0 pb-12 border-r pl-3 xl:pl-6 ${
         isDarkMode ? "bg-darkGrey border-linesDark" : "bg-white border-linesLight"
