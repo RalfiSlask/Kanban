@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ralfislask.github.io/Kanban/static/css/main.51fb29f5.css",
+    "main.js": "/ralfislask.github.io/Kanban/static/js/main.ea295ed2.js",
+    "static/media/icon-light-theme.svg": "/ralfislask.github.io/Kanban/static/media/icon-light-theme.b98efecd506358014a7ae1eadb34e36c.svg",
+    "index.html": "/ralfislask.github.io/Kanban/index.html",
+    "static/media/icon-hide-sidebar.svg": "/ralfislask.github.io/Kanban/static/media/icon-hide-sidebar.16c2f0aac2ddb5130b965d6a46ee22b0.svg",
+    "static/media/icon-dark-theme.svg": "/ralfislask.github.io/Kanban/static/media/icon-dark-theme.9812582fa58ec8051801098dbfd8c29d.svg",
+    "static/media/icon-board.svg": "/ralfislask.github.io/Kanban/static/media/icon-board.e737c403d9f1dea17b8ed92ff1a1eb08.svg",
+    "static/media/icon-show-sidebar.svg": "/ralfislask.github.io/Kanban/static/media/icon-show-sidebar.b186c9a8e4a2e4d7d83e0676d3e128fc.svg",
+    "static/media/logo-mobile.svg": "/ralfislask.github.io/Kanban/static/media/logo-mobile.e60c2fbc3dcefa4256e0569ffba5e523.svg",
+    "static/media/icon-vertical-ellipsis.svg": "/ralfislask.github.io/Kanban/static/media/icon-vertical-ellipsis.5c8996197d4a9dd7a7adfa20ce4abef9.svg",
+    "static/media/icon-cross.svg": "/ralfislask.github.io/Kanban/static/media/icon-cross.536c1475b4767a84e6e6731b0c93cd96.svg",
+    "static/media/icon-add-task-mobile.svg": "/ralfislask.github.io/Kanban/static/media/icon-add-task-mobile.2a8e26ad102dab09554faa37c9d62c19.svg",
+    "static/media/icon-check.svg": "/ralfislask.github.io/Kanban/static/media/icon-check.4e068cb6e6e3395eda40ccf42917b447.svg",
+    "static/media/icon-chevron-down.svg": "/ralfislask.github.io/Kanban/static/media/icon-chevron-down.77595c15c9072ba0ef8a21ab5cc8c376.svg",
+    "static/media/icon-chevron-up.svg": "/ralfislask.github.io/Kanban/static/media/icon-chevron-up.6918f905519d47589a92103b48580f45.svg",
+    "main.51fb29f5.css.map": "/ralfislask.github.io/Kanban/static/css/main.51fb29f5.css.map",
+    "main.ea295ed2.js.map": "/ralfislask.github.io/Kanban/static/js/main.ea295ed2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.51fb29f5.css",
+    "static/js/main.ea295ed2.js"
+  ]
+}
