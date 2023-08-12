@@ -1,4 +1,4 @@
-![Kanban-task managment web-app](./preview.png)
+![Kanban](./preview.png)
 
 
 Built with
