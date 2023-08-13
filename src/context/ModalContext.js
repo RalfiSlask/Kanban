@@ -17,7 +17,7 @@ export const ModalContextProvider = ( {children} ) => {
     const [openNewTaskModal, setNewTaskModal] = useState(false)
     const [openChangeTaskModal, setChangeTaskModal] = useState(false)
     const [openDeleteTaskModal, setDeleteTaskModal] = useState(false)
-
+    
     const openModalOnClick = (setModal) => {
         setModal(true)
         setLightboxActive(true)

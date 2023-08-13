@@ -7,8 +7,8 @@ const ChangeBoardModal = () => {
     const { handleClickOnEditBoardText, handleClickOnDeleteBoardText } = useContext(ModalContext);
 
   return (
-    <div className={`${isDarkMode ? "bg-darkGrey shadow-darkShadow" : "bg-white shadow-lightShadowLarge"} flex flex-col text-[13px] top-[-8px] font-medium justify-between border right-[20px] md:top-[-4px] xl:top-[-6px] absolute h-[94px] w-32 md:w-[192px] rounded-[8px] p-4`}>
-        <p onClick={handleClickOnEditBoardText} className="text-mediumGray cursor-pointer">Edit Board</p>
+    <div className={`${isDarkMode ? "bg-darkGrey shadow-darkShadow" : "bg-white shadow-lightShadowLarge"} flex flex-col text-[13px] top-[50px] z-50 font-medium justify-between border md:top-[60px] xl:top-[-6px] absolute h-[94px] w-32 md:w-[192px] rounded-[8px] p-4`}>
+        <p onClick={handleClickOnEditBoardText} className="cursor-pointer text-mediumGray">Edit Board</p>
         <p onClick={handleClickOnDeleteBoardText} className="text-[#EA5555] cursor-pointer">Delete Board</p>
     </div>
   )
