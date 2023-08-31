@@ -1,4 +1,4 @@
-![Kanban] (./preview.png)
+![Kanban] (./preview.PNG)
 
 
 Built with
