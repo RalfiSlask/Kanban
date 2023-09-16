@@ -1,4 +1,4 @@
-![Kanban] (./preview.png)
+![Kanban] (./preview.PNG)
 
 
 Built with
@@ -17,5 +17,5 @@ Author
 
 Live server
 
-- 
+- https://ralfislask.github.io/Kanban/
 
