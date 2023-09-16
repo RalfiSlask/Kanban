@@ -206,8 +206,6 @@ export const BoardProvider = ( {children} ) => {
         })
       };
 
-    localStorage.clear();
-
     useEffect(() => {
       const currentTask = {...task} 
       setSubtaskInputs(currentTask.subtasks)
