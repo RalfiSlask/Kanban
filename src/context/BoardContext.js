@@ -20,26 +20,82 @@ export const BoardProvider = ( {children} ) => {
     const [subtaskInputs, setSubtaskInputs] = useState([]);
    
     const updateTaskStatus = () => {
-      const updatedBoardList = [...boardList];
-      const currentColumns = updatedBoardList.find(board => board.name === selectedBoard).columns
-      const columnIndex = currentColumnIndex;
-      const currentColumn = currentColumns[columnIndex]
-      const currentTask = currentColumn.tasks.find(currTask => currTask.title === task.title)
-      currentTask.status = statusInput; 
-      currentColumns.forEach(column => {
-      if(column.name === statusInput) {
-            const taskExistInColumn = column.tasks.some(task => task.title === currentTask.title)
-            if(taskExistInColumn) {
-              return
-            } else {
-              currentColumn.tasks = currentColumn.tasks.filter(task => task.title !== currentTask.title);
-              column.tasks.push(currentTask)
-            } 
-        }
-      })  
-      setboardList(updatedBoardList)
-      localStorage.setItem("boards", JSON.stringify(updatedBoardList))
+      const updatedBoardList = boardList.map(board => {
+          if (board.name !== selectedBoard) return board;
+  
+          const updatedColumns = board.columns.map((column, index) => {
+              if (index !== currentColumnIndex) return column;
+  
+              const updatedTasks = column.tasks.map(t => {
+                  if (t.title !== task.title) return t;
+                  return { ...t, status: statusInput };
+              });
+  
+              return { ...column, tasks: updatedTasks };
+          });
+  
+          // Handle moving the task if its status changed
+          const sourceColumn = updatedColumns[currentColumnIndex];
+          const targetColumn = updatedColumns.find(col => col.name === statusInput);
+          
+          if (sourceColumn && targetColumn && sourceColumn !== targetColumn) {
+              const taskToMove = sourceColumn.tasks.find(t => t.title === task.title);
+              if (taskToMove) {
+                  sourceColumn.tasks = sourceColumn.tasks.filter(t => t.title !== task.title);
+                  targetColumn.tasks.push(taskToMove);
+              }
+          }
+  
+          return { ...board, columns: updatedColumns };
+      });
+  
+      setboardList(updatedBoardList);
+      localStorage.setItem("boards", JSON.stringify(updatedBoardList));
     };
+  
+    const changeTask = () => {
+      const updatedBoardList = boardList.map(board => {
+          if (board.name !== selectedBoard) return board;
+
+          const updatedColumns = board.columns.map((column, index) => {
+              if (index !== currentColumnIndex) return column;
+
+              const updatedTasks = column.tasks.map(t => {
+                  if (t.title !== task.title) return t;
+                  
+                  return {
+                      ...t,
+                      title: taskName,
+                      description: description,
+                      subtasks: subtaskInputs,
+                      status: statusInput
+                  };
+              });
+              
+              return { ...column, tasks: updatedTasks };
+          });
+
+          return { ...board, columns: updatedColumns };
+    });
+
+      // Move task to a different column if status has changed
+      const sourceColumn = updatedBoardList.find(board => board.name === selectedBoard).columns[currentColumnIndex];
+      const targetColumn = updatedBoardList.find(board => board.name === selectedBoard).columns.find(column => column.name === statusInput);
+      
+      if (sourceColumn && targetColumn && sourceColumn !== targetColumn) {
+          const taskToMove = sourceColumn.tasks.find(t => t.title === task.title);
+          if (taskToMove) {
+              sourceColumn.tasks = sourceColumn.tasks.filter(t => t.title !== task.title);
+              targetColumn.tasks.push(taskToMove);
+          }
+      }
+
+      setboardList(updatedBoardList);
+      setIsValid(false);
+      localStorage.setItem("boards", JSON.stringify(updatedBoardList));
+  } ;
+
+
 
     const updateSubtasks = (id) => {
       const updatedSubtasks = [...subtaskInputs]
@@ -56,42 +112,25 @@ export const BoardProvider = ( {children} ) => {
         subtasks: subtaskInputs,
         status: statusInput,
       }
-      const updatedColumns = [...columns]
-      updatedColumns.forEach(column => {
-        if(column.name === updatedTask.status) {
-          column.tasks.push(updatedTask)
-        }
-      });
-      const updatedBoardList = [...boardList]
-      setIsValid(false)
-      localStorage.setItem("boards", JSON.stringify(updatedBoardList))
-     };
+      const updatedBoardList = boardList.map(board => {
+        if(board.name !== selectedBoard) return board
 
-     const changeTask = () => {
-      const updatedBoardList = [...boardList]
-      const currentColumns = updatedBoardList.find(board => board.name === selectedBoard).columns
-      const columnIndex = currentColumnIndex;
-      const currentColumn = currentColumns[columnIndex]
-      const currentTask = currentColumn.tasks.find(currTask => currTask.title === task.title)
-      currentTask.title = taskName;
-      currentTask.description = description;
-      currentTask.subtasks = subtaskInputs;
-      currentTask.status = statusInput; 
-      currentColumns.forEach(column => {
-      if(column.name === statusInput) {
-            const taskExistInColumn = column.tasks.some(task => task.title === currentTask.title)
-            if(taskExistInColumn) {
-              return
-            } else {
-              currentColumn.tasks = currentColumn.tasks.filter(task => task.title !== currentTask.title);
-              column.tasks.push(currentTask)
-            } 
-        }
-      })  
+        const updatedColumns = board.columns.map(column => {
+          if(column.name != updatedTask.status) return column
+
+          return {...column, tasks: [...column.tasks, updatedTask]}
+
+        })
+
+        return {...board, columns: updatedColumns}
+
+      });
       setboardList(updatedBoardList)
       setIsValid(false)
       localStorage.setItem("boards", JSON.stringify(updatedBoardList))
      };
+
+
 
     const AddNewBoard = () => {
       const updatedBoardList = [...boardList, {name: boardName, columns: columnInputs}]
@@ -174,7 +213,7 @@ export const BoardProvider = ( {children} ) => {
         setboardList(updatedBoardList)
         localStorage.setItem("boards", JSON.stringify(updatedBoardList))
       }
-    };
+    }; 
 
     const handleChangeDescription = (event) => {
       setDescription(event.target.value)
