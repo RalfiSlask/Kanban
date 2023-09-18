@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Kanban/static/css/main.5d61e5ef.css",
-    "main.js": "/Kanban/static/js/main.6d0eebc2.js",
+    "main.css": "/Kanban/static/css/main.b645a3de.css",
+    "main.js": "/Kanban/static/js/main.038237c8.js",
     "static/media/icon-light-theme.svg": "/Kanban/static/media/icon-light-theme.b98efecd506358014a7ae1eadb34e36c.svg",
     "static/media/icon-hide-sidebar.svg": "/Kanban/static/media/icon-hide-sidebar.16c2f0aac2ddb5130b965d6a46ee22b0.svg",
     "index.html": "/Kanban/index.html",
@@ -15,11 +15,11 @@
     "static/media/icon-check.svg": "/Kanban/static/media/icon-check.4e068cb6e6e3395eda40ccf42917b447.svg",
     "static/media/icon-chevron-down.svg": "/Kanban/static/media/icon-chevron-down.77595c15c9072ba0ef8a21ab5cc8c376.svg",
     "static/media/icon-chevron-up.svg": "/Kanban/static/media/icon-chevron-up.6918f905519d47589a92103b48580f45.svg",
-    "main.5d61e5ef.css.map": "/Kanban/static/css/main.5d61e5ef.css.map",
-    "main.6d0eebc2.js.map": "/Kanban/static/js/main.6d0eebc2.js.map"
+    "main.b645a3de.css.map": "/Kanban/static/css/main.b645a3de.css.map",
+    "main.038237c8.js.map": "/Kanban/static/js/main.038237c8.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d61e5ef.css",
-    "static/js/main.6d0eebc2.js"
+    "static/css/main.b645a3de.css",
+    "static/js/main.038237c8.js"
   ]
 }
