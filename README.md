@@ -13,7 +13,7 @@ Built with
 
 ## Live Demo
 
-Explore the live demo of the Audiophile E-commerce website [here](https://ralfislask.github.io/Kanban/).
+Explore the live demo of the Kanban app [here](https://ralfislask.github.io/Kanban/).
 
 ## Status
 
