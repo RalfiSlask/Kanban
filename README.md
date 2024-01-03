@@ -36,7 +36,7 @@ To run the Kanban application on your local machine, follow these steps:
 
 1. Download or clone the repository.
 2. Install the necessary dependencies by running `npm install`.
-3. Start the application using `npm run dev` (Vite).
+3. Start the application using `npm start` (Create React App).
 
 ## App Description
 
