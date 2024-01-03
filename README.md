@@ -11,6 +11,17 @@ Built with
 - React
 - Tailwind
 
+## Code Formatting and Linting
+
+### Prettier
+
+I used Prettier for code formatting. It helps to format the code and making it consistent throughout the whole project.
+
+### Eslint
+
+For linting i used ESlint. It helped me catch errors in the code and uphold typescript standards. The Eslint file
+follows common rules for this kind of project.
+
 ## Live Demo
 
 Explore the live demo of the Kanban app [here](https://ralfislask.github.io/Kanban/).
