@@ -1,8 +1,5 @@
+const ModalHeading = ({ title }) => {
+  return <div className="font-bold text-[18px]">{title}</div>;
+};
 
-const ModalHeading = ( {title} ) => {
-  return (
-    <div className="font-bold text-[18px]">{title}</div>
-  )
-}
-
-export default ModalHeading
+export default ModalHeading;
