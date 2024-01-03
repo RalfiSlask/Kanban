@@ -11,6 +11,17 @@ Built with
 - React
 - Tailwind
 
+## Code Formatting and Linting
+
+### Prettier
+
+I used Prettier for code formatting. It helps to format the code and making it consistent throughout the whole project.
+
+### Eslint
+
+For linting i used ESlint. It helped me catch errors in the code and uphold typescript standards. The Eslint file
+follows common rules for this kind of project.
+
 ## Live Demo
 
 Explore the live demo of the Kanban app [here](https://ralfislask.github.io/Kanban/).
@@ -25,7 +36,7 @@ To run the Kanban application on your local machine, follow these steps:
 
 1. Download or clone the repository.
 2. Install the necessary dependencies by running `npm install`.
-3. Start the application using `npm start` (Create React App).
+3. Start the application using `npm run dev` (Vite).
 
 ## App Description
 
